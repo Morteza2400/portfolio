@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Novel 6-Stroke ICE with Water-Vapor Bottoming Cycle · Morteza Imani</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- Shared site styles -->
+  <link rel="stylesheet" href="css/base.css">
+  <!-- Page-scoped styles -->
+  <link rel="stylesheet" href="css/project-sixstroke.css">
+</head>
+
+<body class="project-sixstroke">
+  <!-- NAV (identical site-wide) -->
+  <div class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html"><span class="dot"></span><strong>Morteza Imani</strong></a>
+      <nav>
+        <a href="index.html">About</a>
+        <a href="gis.html">GIS Showcase</a>
+        <a href="research.html">Research</a>
+        <a class="active" href="projects.html">Projects</a>
+        <a href="education.html">Education</a>
+        <a href="work.html">Work Experience</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN GRID -->
+  <main class="container six-grid">
+    <!-- LEFT: content stack -->
+    <section class="stack">
+      <!-- HERO -->
+      <section class="card hero-card">
+        <h1>Designing a New 6-Stroke Cycle in a 4-Stroke ICE Using a Water-Vapor Bottoming Cycle</h1>
+        <p class="muted">
+          Implemented at the <strong>Shahrood University of Technology — Research Center</strong>.
+          We re-timed a conventional 4-stroke spark-ignition engine and added two new
+          water-injection/expansion strokes. The idea: after the standard power (combustion)
+          stroke, <em>re-compress the hot exhaust gases</em> and inject high-pressure water.
+          The water rapidly flashes/evaporates, expands, and delivers an <strong>additional
+          power stroke</strong>. We designed and fabricated a custom <strong>timing (cam) shaft</strong>,
+          a <strong>high-pressure water injection system</strong>, and a mobile <strong>test rig</strong> to evaluate the cycle.
+        </p>
+        <div class="pills">
+          <span class="pill">Novel thermodynamic cycle</span>
+          <span class="pill">High-pressure atomization</span>
+          <span class="pill">Custom camshaft & valve timing</span>
+        </div>
+      </section>
+
+      <!-- WHAT & WHY -->
+      <section class="grid2">
+        <article class="card">
+          <h2>Concept</h2>
+          <ul class="ticks">
+            <li>Keep the standard 4 strokes (intake, compression, combustion/power, exhaust).</li>
+            <li>Add two strokes:
+              <ol style="margin:6px 0 0 18px">
+                <li><strong>Re-compression</strong> of retained hot gases.</li>
+                <li><strong>Water injection & expansion</strong> (flash to steam → extra work output).</li>
+              </ol>
+            </li>
+            <li>Timing strategy ensures adequate temperature/pressure for rapid vaporization.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h2>Role & scope</h2>
+          <div class="meta">
+            <p class="muted"><strong>Organization:</strong> Shahrood University of Technology — Research Center</p>
+            <p class="muted"><strong>My role:</strong> Concept, detailed design, fabrication, and test integration.</p>
+            <p class="muted"><strong>Hardware:</strong> custom multi-lobe camshaft, followers, bearings; high-pressure pump; injectors; control & plumbing; rolling test chassis.</p>
+          </div>
+        </article>
+      </section>
+
+      <!-- EXTENDED REPORT -->
+      <section class="card">
+        <h2>Extended technical report (non-proprietary)</h2>
+
+        <h3>1) Thermodynamic cycle</h3>
+        <p class="muted">
+          The 6-stroke sequence modifies the gas exchange and adds a water-vapor bottoming loop:
+          <strong>I</strong> Intake → <strong>II</strong> Compression → <strong>III</strong> Combustion/Power →
+          <strong>IV</strong> Partial Exhaust (retain hot gases) →
+          <strong>V</strong> Re-compression of trapped residuals →
+          <strong>VI</strong> Water injection & steam expansion (second power stroke). The residual
+          gas temperature after IV–V is leveraged to flash atomized water to vapor. Valve phasing
+          is tuned to trap sufficient enthalpy while limiting pumping loss.
+        </p>
+
+        <h3>2) Valve timing & camshaft</h3>
+        <p class="muted">
+          We replaced the OEM cam with a <em>custom multi-profile shaft</em> to realize atypical
+          hold-open/early-close events for the re-compression and water strokes. The design
+          process included: (i) lobe-profile synthesis (dwell, ramp, jerk limits for follower
+          survivability), (ii) bearing selection and seat drawings, (iii) CNC machining,
+          (iv) assembly and run-out checks. Photos (below) show CAD, mechanical drawings,
+          raw lobes, and the final shaft.
+        </p>
+
+        <h3>3) Water injection system</h3>
+        <p class="muted">
+          To achieve rapid vaporization, we employed high-pressure liquid injection with fine
+          atomization. The system includes a plunger-type pump, accumulator, stainless lines,
+          and a single-hole/mini-multihole injector. Injection is phased late in re-compression
+          with the intake closed to maximize sensible heat transfer and minimize wall wetting.
+          Nozzle targeting and droplet SMD were selected to avoid quench and to preserve wall films.
+        </p>
+
+        <h3>4) Controls & instrumentation</h3>
+        <p class="muted">
+          A simple phase controller synchronized cam angle, ignition, and water-pulse timing.
+          On-engine sensors measured manifold pressure, crank speed, injector pressure, and
+          exhaust temperature. The rolling rig allowed safe outdoor testing with radiator and
+          cooling loop mounted on the frame.
+        </p>
+
+        <h3>5) Test observations</h3>
+        <ul class="ticks">
+          <li>Clean steam puffs observed during water-strokes at correct phasing and pressure.</li>
+          <li>Measured torque rise during water-expansion compared to dry baseline at same throttle.</li>
+          <li>Knock not observed due to water’s charge-cooling; peak exhaust temperature reduced.</li>
+          <li>Key sensitivities: injector pressure & droplet size, re-compression pressure, and trapped residual mass.</li>
+        </ul>
+
+        <h3>6) Practical considerations</h3>
+        <ul class="ticks">
+          <li><strong>Materials:</strong> corrosion-resistant lines/nozzles; attention to water/oil separation.</li>
+          <li><strong>Thermal management:</strong> avoid cylinder wall quench; favor mid-chamber spray targeting.</li>
+          <li><strong>Safety:</strong> high-pressure water line shielding; over-pressure relief; hot-surface spray protocols.</li>
+        </ul>
+
+        <h3>7) Status & outcomes</h3>
+        <ul class="ticks">
+          <li>Demonstrated feasibility on a small SI engine with custom timing hardware.</li>
+          <li>Built a reusable research platform for further optimization (EGR fraction, multi-pulse, variable water rate).</li>
+          <li>Documentation package: CAD, drawings, timing maps, and test logs.</li>
+        </ul>
+      </section>
+
+
+    </section>
+    <aside class="card side-pane" aria-label="Quick facts">
+      <header><strong>Summary</strong></header>
+      <div class="side-frame">
+        <ul class="ticks">
+          <li>Project: Shahrood University of Technology — Research Center</li>
+          <li>Scope: Timing redesign + water-injection bottoming cycle</li>
+          <li>Hardware: custom camshaft, HP pump, injector, rig</li>
+          <li>Goal: additional expansion work from steam power stroke</li>
+        </ul>
+        <hr class="sep"/>
+          <img src="img/projects/engine.jpg" alt="Cycle schematic, drawings, camshaft, rig">
+        </p>
+      </div>
+    </aside>
+
+  </main>
+
+  <footer class="container">© <span id="y"></span> Morteza Imani · 6-Stroke Water-Vapor Cycle</footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>

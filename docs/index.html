@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Morteza Imani – Portfolio</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/index.css">
+  <meta name="description" content="Hydraulic modelling & GIS portfolio — EWCM research, GIS dashboards, SQL & analytics."/>
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html"><span class="dot"></span><strong>Morteza Imani</strong></a>
+      <nav>
+        <a class="active" href="index.html">About</a>
+        <a href="gis.html">GIS Showcase</a>
+        <a href="research.html">Research</a>
+        <a href="projects.html">Projects</a>
+        <a href="education.html">Education</a>
+        <a href="work.html">Work Experience</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1>Hydraulic Modelling · GIS · Analytics</h1>
+        <p class="muted">
+          Water engineer experienced in end-to-end modelling of urban and regional water systems — from
+          hydraulic simulation and network performance to spatial analytics and decision dashboards.
+          Over eight years’ combined experience in research and industry, currently completing a PhD
+          in Civil & Environmental Engineering at the University of Adelaide.  Skilled in using
+          integrated data and modelling tools to support water-security planning, operations
+          management, and infrastructure investment.
+        </p>
+        <div class="pills" style="margin:12px 0">
+          <span class="pill">Hydraulic & Water-System Modelling</span>
+          <span class="pill">Scenario & Capacity Assessment</span>
+          <span class="pill">GIS / Spatial Analysis (ArcGIS Enterprise)</span>
+          <span class="pill">Data Analytics & Power BI</span>
+          <span class="pill">Python · SQL · FME · MATLAB</span>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+          <a class="btn primary" href="gis.html">Open GIS Showcase</a>
+          <a class="btn outline" href="assets/Morteza_Imani_CV.pdf" target="_blank" rel="noopener">Download CV</a>
+          <a class="btn" href="research.html">View Papers</a>
+        </div>
+      </div>
+      <div class="hero-slider" aria-label="Photo carousel">
+        <button class="slide-nav prev" aria-label="Previous photo" title="Previous">‹</button>
+
+        <div class="slides" role="listbox" aria-live="polite">
+          <!-- Slide 1 (your current profile photo) -->
+          <figure class="slide is-active" role="option" aria-selected="true">
+            <img src="img/profile.jpg" alt="Portrait of Morteza Imani" loading="eager">
+            <figcaption class="sr-only">Portrait</figcaption>
+          </figure>
+
+          <!-- Slide 2 (desk) -->
+          <figure class="slide" role="option" aria-selected="false">
+            <img src="img/pic1.jpg" alt="Morteza at his work desk" loading="lazy">
+            <figcaption class="sr-only">At work</figcaption>
+          </figure>
+
+          <!-- Slide 3 (hiking) -->
+          <figure class="slide" role="option" aria-selected="false">
+            <img src="img/pic2.jpg" alt="Morteza hiking" loading="lazy">
+            <figcaption class="sr-only">Hiking</figcaption>
+          </figure>
+        </div>
+
+        <button class="slide-nav next" aria-label="Next photo" title="Next">›</button>
+
+        <div class="dots" role="tablist" aria-label="Slide dots">
+          <button class="dot is-active" role="tab" aria-controls="slide-1" aria-selected="true"></button>
+          <button class="dot" role="tab" aria-controls="slide-2" aria-selected="false"></button>
+          <button class="dot" role="tab" aria-controls="slide-3" aria-selected="false"></button>
+        </div>
+      </div>
+
+    </section>
+
+    <hr class="sep">
+
+    <section class="grid3">
+      <div class="card">
+        <h2>Highlights</h2>
+          <ul>
+            <li>Delivered hydraulic and water-system models for capacity, reliability, and scenario analysis.</li>
+            <li>Developed GIS-based asset and demand dashboards integrating SQL, Python, and FME workflows.</li>
+            <li>Supported data-driven planning and network management for SA Water and research partners.</li>
+          </ul>
+      </div>
+      <div class="card">
+        <h2>Core Skills</h2>
+          <ul>
+            <li>Water-resources & hydraulic modelling (EWCM / EPANET / custom ODE frameworks)</li>
+            <li>GIS & spatial data management (ArcGIS Pro, Enterprise, Leaflet)</li>
+            <li>Data integration & analytics (Python, SQL Server, Power BI, FME)</li>
+            <li>Scenario planning, supply–demand analysis & risk visualisation</li>
+            <li>Collaborative problem-solving and technical communication</li>
+          </ul>
+      </div>
+      <div class="card">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:morteza.imani@adelaide.edu.au" style="color:var(--link)">morteza.imani@adelaide.edu.au</a></p>
+        <p>Email: <a href="mailto:imani.mrt@gmail.com" style="color:var(--link)">imani.mrt@gmail.com</a></p>
+        <p>GitHub: <a href="https://github.com/Morteza2400" target="_blank" style="color:var(--link)">Morteza2400</a></p>
+        <p>Location: Adelaide, SA</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">© <span id="y"></span> Morteza Imani · Portfolio</footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+  <script>
+    (function(){
+      const slider = document.querySelector('.hero-slider');
+      if(!slider) return;
+
+      const slides = [...slider.querySelectorAll('.slide')];
+      const dots   = [...slider.querySelectorAll('.dot')];
+      const prev   = slider.querySelector('.prev');
+      const next   = slider.querySelector('.next');
+
+      let i = 0;
+      const set = (idx) => {
+        i = (idx + slides.length) % slides.length;
+        slides.forEach((s, k) => {
+          s.classList.toggle('is-active', k === i);
+          s.setAttribute('aria-selected', k === i ? 'true' : 'false');
+        });
+        dots.forEach((d, k) => d.classList.toggle('is-active', k === i));
+      };
+
+      prev.addEventListener('click', () => set(i - 1));
+      next.addEventListener('click', () => set(i + 1));
+      dots.forEach((d, k) => d.addEventListener('click', () => set(k)));
+
+      // Keyboard support
+      slider.addEventListener('keydown', (e) => {
+        if(e.key === 'ArrowLeft')  set(i - 1);
+        if(e.key === 'ArrowRight') set(i + 1);
+      });
+
+      // Basic swipe for touch
+      let startX = null;
+      slider.addEventListener('touchstart', e => startX = e.touches[0].clientX, {passive:true});
+      slider.addEventListener('touchend', e => {
+        if(startX == null) return;
+        const dx = e.changedTouches[0].clientX - startX;
+        if(Math.abs(dx) > 40) set(i + (dx < 0 ? 1 : -1));
+        startX = null;
+      });
+
+      // Auto-advance (optional): uncomment to enable
+      // let timer = setInterval(()=> set(i+1), 6000);
+      // slider.addEventListener('pointerenter', ()=> clearInterval(timer));
+      // slider.addEventListener('pointerleave', ()=> timer = setInterval(()=> set(i+1), 6000));
+    })();
+  </script>
+
+</body>
+</html>

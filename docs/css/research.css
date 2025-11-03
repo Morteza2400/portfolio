@@ -1,0 +1,103 @@
+/* Scope everything to .research so site-wide styles don't override */
+.research{
+  --panel:#121318;    /* your darker panel */
+  --ink:#e8e8e8;      /* card text */
+  --muted:#a7a7a7;    /* muted text */
+  --brand:#59d0ff;    /* links/badges */
+  --accent:#83ffb0;   /* the green you liked */
+  --line:#23242b;     /* borders */
+}
+
+/* Page typographic scale to match index */
+.research h1{font-size:2rem;margin:0 0 8px}
+.research h2{font-size:1.25rem;margin:0 0 12px}
+.research .sub{color:var(--muted)}
+
+/* Grid helpers for the featured cards */
+.research .grid{display:grid;gap:16px}
+.research .cards{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.research .cards{
+  display:grid;                            /* make it a grid */
+  grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+  gap:16px;
+}
+.research .panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 12px 24px rgba(0,0,0,.28);
+}
+
+/* Smaller, more compact citation card */
+.research .citation-panel {
+  max-width: 600px;
+  margin: 20px auto;
+  font-size: 0.9rem;
+  padding: 12px;
+}
+
+/* Wider publication table */
+.research .publication-panel {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 20px;
+}
+.research .paper-card{
+  background:var(--panel);
+  color:var(--ink);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  box-shadow:0 14px 30px rgba(0,0,0,.35);
+  height:100%;
+}
+.research .status-pill{
+  display:inline-flex;align-items:center;
+  background:var(--accent);color:#0b0c10;
+  font-weight:700;font-size:12px;letter-spacing:.1px;
+  padding:6px 12px;border-radius:999px;
+}
+.research .title{font-weight:750;text-align: justify; font-size:20px;line-height:1.25}
+.research .meta{color:var(--muted);font-size:13px}
+
+.research .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto}
+.research .btn{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid var(--line);
+  background:#161821;color:var(--ink);
+  padding:8px 12px;border-radius:12px;font-weight:600;
+  text-decoration:none;
+}
+.research .btn:hover{background:#1a1d28;text-decoration:none}
+
+
+
+/* Citations hint text */
+.research .hint{font-size:12px;color:var(--muted);margin-top:8px}
+.research .ok{color:var(--accent);font-weight:600}
+.research .err{color:#ff8b8b;font-weight:600}
+
+/* Publications table — your dashed rows */
+.research .publist{width:100%;border-collapse:collapse}
+.research .publist th,.research .publist td{
+  padding:10px 8px;border-bottom:1px dashed var(--line);vertical-align:top}
+.research .publist th{color:var(--muted);font-weight:600;text-align:left}
+.research .kicker{font-size:12px;color:var(--muted);margin-bottom:6px}
+.research .badge{
+  display:inline-block;font-size:11px;color:#0b0c10;background:var(--brand);
+  padding:2px 8px;border-radius:999px;margin-left:6px
+}
+.research .publist a {
+  color: var(--brand-2);        /* use your green accent */
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.research .publist a:hover {
+  color: var(--link);           /* blue tone on hover */
+  text-decoration: underline;
+}    

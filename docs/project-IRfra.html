@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>IR-FRA — Thermomechanical Analysis of Fuel Rods (PWR) · Morteza Imani</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- Shared site styles -->
+  <link rel="stylesheet" href="css/base.css">
+  <!-- Page-scoped styles for this project -->
+  <link rel="stylesheet" href="css/project-irfra.css">
+</head>
+
+<body class="project-irfra">
+  <!-- NAV (kept identical across pages) -->
+  <div class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html"><span class="dot"></span><strong>Morteza Imani</strong></a>
+      <nav>
+        <a href="index.html">About</a>
+        <a href="gis.html">GIS Showcase</a>
+        <a href="research.html">Research</a>
+        <a class="active" href="projects.html">Projects</a>
+        <a href="education.html">Education</a>
+        <a href="work.html">Work Experience</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN GRID -->
+  <main class="container irfra-grid">
+    <!-- LEFT COLUMN -->
+    <section class="stack">
+      <!-- HERO -->
+      <section class="card hero-card">
+        <h1>IR-FRA: Thermomechanical Analysis of Fuel Rods (PWR)</h1>
+        <p class="muted">
+          <strong>IR-FRA</strong> is a numerical code I developed during my M.Sc. (2011–2014) at
+          Shahid Beheshti University for steady-state, long-term <em>thermo-mechanical</em> analysis
+          of light-water reactor fuel rods (PWR/WWER). The project was supported by the
+          <strong>Management & Construction of Nuclear Power Plant Company of Iran</strong> and
+          implemented by me at SBU. IR-FRA models pellet–cladding interaction (PCI), gap
+          conductance, creep, swelling/densification, fission-gas release, and temperature/stress
+          fields along the rod to inform performance and safety assessments.
+        </p>
+        <div class="pills">
+          <span class="pill">Fuel performance</span>
+          <span class="pill">PCI / PCMI</span>
+          <span class="pill">Finite Element + Virtual Work</span>
+        </div>
+      </section>
+
+      <!-- VALUE / OUTCOMES -->
+      <section class="grid2">
+        <article class="card">
+          <h2>Purpose & capability</h2>
+          <ul class="ticks">
+            <li>Predict <strong>temperature, stress/strain, displacement</strong> in fuel & cladding.</li>
+            <li>Model <em>gap heat transfer</em> (gas conduction, contact, radiation) and oxide growth.</li>
+            <li>Simulate <strong>PCI/PCMI</strong> over long burnups with <em>creep down, swelling, densification</em>.</li>
+            <li>Estimate <strong>fission gas release</strong> and plenum pressure evolution.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h2>Outcomes</h2>
+          <ul class="ticks">
+            <li>Benchmarked against reference codes (e.g., FROBA, BISON) and published/experimental data.</li>
+            <li>Computed contact timing and gap evolution consistent with WWER1000 data.</li>
+            <li>Modular structure for axial segmentation and burnup-dependent material models.</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- TECHNICAL OVERVIEW (non-sensitive) -->
+      <section class="card">
+        <h2>Technical scope (non-sensitive)</h2>
+        <div class="grid3">
+          <div>
+            <h3>Thermal</h3>
+            <p class="muted">
+              Radial heat conduction in pellet/clad; coolant convection (Dittus–Boelter/Jens–Lottes),
+              burnup-dependent UO<sub>2</sub> conductivity, oxide layer growth, and composite gap conductance.
+            </p>
+          </div>
+          <div>
+            <h3>Mechanical</h3>
+            <p class="muted">
+              Equilibrium from the <em>principle of virtual work</em> with generalized plane-strain;
+              finite-element solution for <em>u–ε–σ</em>; fuel swelling & densification; cladding creep-down.
+            </p>
+          </div>
+          <div>
+            <h3>Fission gas</h3>
+            <p class="muted">
+              Diffusion/release model for grain/grain-boundary transport; coupling to gap pressure
+              and thermal conductance across burnup.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAPER LINK -->
+      <section class="card">
+        <h2>Publication</h2>
+        <ul class="ticks">
+          <li>
+            <span class="muted">Annals of Nuclear Energy (2015)</span> —
+            <em>Numerical study of fuel–clad mechanical interaction during long-term burnup of WWER1000</em>.
+            <a href="https://doi.org/10.1016/j.anucene.2015.01.036" target="_blank" rel="noopener">DOI</a>
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    <!-- RIGHT COLUMN: sticky, scrollable PDF -->
+    <aside class="card pdf-pane" aria-label="Publication PDF">
+      <header><strong>Read the published paper (scroll)</strong></header>
+      <div class="pdf-frame">
+        <!-- Put your PDF at /papers/IR-FRA.pdf or adjust this path -->
+        <iframe
+          src="papers/IR-FRA.pdf#view=FitH&toolbar=1&navpanes=0"
+          title="IR-FRA paper"
+          loading="lazy">
+        </iframe>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="container">© <span id="y"></span> Morteza Imani · IR-FRA Fuel Rod Analysis</footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>

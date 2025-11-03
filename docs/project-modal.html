@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Modal Analysis of WDSs (EWCM) – Morteza Imani</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <!-- Your shared styles -->
+  <link rel="stylesheet" href="css/base.css">
+  <!-- Page-scoped styles for this project -->
+  <link rel="stylesheet" href="css/project-modal.css">
+</head>
+
+<body class="project-modal">
+  <!-- NAV (kept identical to your other pages) -->
+  <div class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html"><span class="dot"></span><strong>Morteza Imani</strong></a>
+      <nav>
+        <a href="index.html">About</a>
+        <a href="gis.html">GIS Showcase</a>
+        <a href="research.html">Research</a>
+        <a class="active" href="projects.html">Projects</a>
+        <a href="education.html">Education</a>
+        <a href="work.html">Work Experience</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN: left content stack + right sticky PDF -->
+  <main class="container modal-grid">
+    <!-- LEFT: content -->
+    <section class="stack">
+      <!-- HERO -->
+      <section class="card hero-card">
+        <h1>Modal Analysis of Water Distribution Systems (EWCM)</h1>
+        <p class="muted">
+          Part of my PhD research at the University of Adelaide. We adapt
+          <strong>modal analysis</strong> (eigen-modes, damping, spatial mode shapes) to
+          water networks using the Elastic Water Column Model (EWCM). This gives utilities a
+          fast, state-space view of <em>where</em> resonance amplifies transients and
+          <em>how</em> to mitigate them.
+        </p>
+        <div class="pills">
+          <span class="pill">Participation Factors (PF)</span>
+          <span class="pill">Mode Frequencies & Damping</span>
+          <span class="pill">State-Space / Control-ready</span>
+        </div>
+      </section>
+
+      <!-- VALUE FOR UTILITIES -->
+      <section class="grid2">
+        <div class="card">
+          <h2>What problem does this solve?</h2>
+          <p class="muted">
+            Transients can quietly build at specific locations and frequencies. Classical
+            frequency-domain tools show <em>what</em> frequencies matter; our method also
+            shows <em>where</em> in the network each mode lives — so you can prioritise
+            mitigation and monitoring.
+          </p>
+        </div>
+        <div class="card">
+          <h2>Outcomes for operators</h2>
+          <ul class="ticks">
+            <li>Identify vulnerable nodes/links using <strong>PF maps</strong>.</li>
+            <li>Test “what-if” changes (PRV ramps, pump trips) before you implement.</li>
+            <li>Build reduced-order, <strong>control-ready</strong> models from dominant modes.</li>
+          </ul>
+        </div>
+      </section>
+
+    <section class="card">
+        <h2>Representation for a small network</h2>
+
+        <!-- OPTIONAL: animated slide as a high-quality video -->
+        <figure class="fig" style="margin-top:12px">
+            <video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+            poster="img/ewcm_poster.jpg"
+            style="width:100%;height:auto;border-radius:10px">
+            <source src="media/modal.mp4" type="video/mp4">
+            <source src="media/modal.webm" type="video/webm">
+            Sorry, your browser doesn’t support embedded video.
+            </video>
+        </figure>
+    </section>
+    <!-- HOW IT WORKS -->
+    <section class="card">
+    <h2>How it works (in brief)</h2>
+    <div class="grid3">
+        <div>
+        <h3>Linearize EWCM</h3>
+        <p class="muted">Steady operating point → state-space model of WDSs.</p>
+        </div>
+        <div>
+        <h3>Eigen-analysis</h3>
+        <p class="muted">Eigenvalues → frequencies & damping; eigenvectors → mode shapes.</p>
+        </div>
+        <div>
+        <h3>Participation Factors</h3>
+        <p class="muted">PF quantifies each node/pipe’s contribution to each mode → spatial risk.</p>
+        </div>
+    </div>
+
+    <details class="details">
+        <summary>Show technical notes</summary>
+        <div class="details-body">
+        <ul>
+            <li>Validated vs. admittance-matrix poles in the Laplace domain.</li>
+            <li>PFs derive from left/right eigenvectors; sums over states/modes = 1.</li>
+            <li>Sparse matrices and per-pipe reaches keep it scalable.</li>
+        </ul>
+        </div>
+    </details>
+    </section>
+    </section>
+    <!-- RIGHT: sticky PDF pane (scrollable) -->
+    <aside class="card pdf-pane" aria-label="Publication PDF">
+      <header><strong>Publication (PDF)</strong></header>
+      <div class="pdf-frame">
+        <!-- Put your PDF at this path or adjust the src to your filename -->
+        <iframe
+          src="papers/modal-analysis-ewcm.pdf#view=FitH&toolbar=1&navpanes=0"
+          title="Modal Analysis paper"
+          loading="lazy">
+        </iframe>
+      </div>
+    </aside>
+    
+  </main>
+
+  <footer class="container">© <span id="y"></span> Morteza Imani · Modal Analysis (EWCM)</footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+
+  <!-- Tiny JS for the slider demo -->
+  <script>
+    const s = document.getElementById('freq');
+    const f = document.getElementById('fVal');
+    const hi = document.getElementById('hi');
+    const lo = document.getElementById('lo');
+
+    function updateBars(){
+      const v = parseFloat(s.value);          // 1..10
+      f.textContent = v.toFixed(1);
+      // toy mapping: higher frequency → bigger contrast
+      const hiPct = Math.min(85, 40 + v*5);   // 40..90
+      const loPct = Math.max(8,  30 - v*2.2); // 8..30
+      hi.style.width = hiPct + '%';
+      lo.style.width = loPct + '%';
+    }
+    s.addEventListener('input', updateBars);
+    updateBars();
+  </script>
+</body>
+</html>

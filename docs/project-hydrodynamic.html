@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Gas Network Simulation of Centrifuge Cascades – Morteza Imani</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <!-- shared site styles -->
+  <link rel="stylesheet" href="css/base.css">
+  <!-- project-specific style (reuse isotope layout) -->
+  <link rel="stylesheet" href="css/project-isotopes.css">
+</head>
+
+<body class="project-isotope">
+  <!-- NAV -->
+  <div class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html"><span class="dot"></span><strong>Morteza Imani</strong></a>
+      <nav>
+        <a href="index.html">About</a>
+        <a href="gis.html">GIS Showcase</a>
+        <a href="research.html">Research</a>
+        <a class="active" href="projects.html">Projects</a>
+        <a href="education.html">Education</a>
+        <a href="work.html">Work Experience</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="container isotope-grid">
+    <!-- LEFT COLUMN -->
+    <section class="stack">
+      <!-- HERO -->
+      <section class="card hero-card">
+        <h1>Custom Code for Gas‑Dynamic Pipe Networks in Centrifuge Cascades</h1>
+        <p class="muted">
+          Developed for the <strong>Advanced Technologies Company</strong> and the <strong>Nuclear Science & Technology Research Institute of Iran</strong>,
+          this project produced a numerical solver capable of simulating the full <em>gas-dynamic network</em> of centrifuge cascades
+          — including <strong>centrifuges, control pressure valves, and inter-connecting pipework</strong> —
+          under both <em>steady-state</em> and <em>transient</em> conditions.
+          The model enables engineers to predict pressure, flow, and holdup distribution during commissioning,
+          decommissioning, and feed-flow variations.
+        </p>
+        <div class="pills">
+          <span class="pill">Compressible Flow</span>
+          <span class="pill">Transient & Steady Simulation</span>
+          <span class="pill">Cascade Hydrodynamics</span>
+        </div>
+      </section>
+
+      <!-- PROJECT VALUE -->
+      <section class="grid2">
+        <article class="card">
+          <h2>Purpose & capability</h2>
+          <ul class="ticks">
+            <li>Numerical simulation of <strong>pressure and flow fields</strong> across any cascade configuration.</li>
+            <li>Dynamic coupling between <em>pipes</em>, <em>control valves</em>, and <em>centrifuges</em>.</li>
+            <li>Predicts equilibrium time and <strong>gas holdup</strong> after flow transients.</li>
+            <li>Supports control-valve tuning to achieve target cascade cut and stability.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>Outcomes</h2>
+          <ul class="ticks">
+            <li>Validated against MATLAB Simscape transient models (&lt;10% error).</li>
+            <li>Identified <em>critical stages</em> with highest feed loads and vibration risk.</li>
+            <li>Showed how gradual feed ramp-up suppresses reverse flows at start-up.</li>
+            <li>Formed basis for industrial software “HSSC – Hydrodynamic Simulation of Separation Cascades”.</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- TECHNICAL OVERVIEW -->
+      <section class="card">
+        <h2>Technical scope</h2>
+        <div class="grid3">
+          <div>
+            <h3>Flow equations</h3>
+            <p class="muted">Solves coupled continuity–momentum ODE/PDE set for isothermal compressible gas in pipes using implicit finite-difference (Crank–Nicolson).</p>
+          </div>
+          <div>
+            <h3>Component models</h3>
+            <p class="muted">Includes control-valve throttling, gas-centrifuge pumping and storage, and junction pressure balancing via secant iteration.</p>
+          </div>
+          <div>
+            <h3>Simulation engine</h3>
+            <p class="muted">Time-marching solver built in MATLAB with modular data structure for arbitrary cascade geometries.</p>
+          </div>
+        </div>
+      </section>
+
+
+
+      <!-- PAPER -->
+      <section class="card">
+        <h2>Publication</h2>
+        <ul class="ticks">
+          <li>
+            <span class="muted">Annals of Nuclear Energy (2022)</span> —
+            <em>Numerical simulation of hydrodynamic performance of taper cascades in transient conditions.</em>
+            <a href="https://doi.org/10.1016/j.anucene.2022.109287" target="_blank" rel="noopener">DOI</a>
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    <!-- RIGHT COLUMN: sticky PDF -->
+    <aside class="card pdf-pane" aria-label="Publication PDF">
+      <header><strong>Read the published paper (scroll)</strong></header>
+      <div class="pdf-frame">
+        <iframe
+          src="papers/hydrodynamic.pdf#view=FitH&toolbar=1&navpanes=0"
+          title="Hydrodynamic simulation paper"
+          loading="lazy">
+        </iframe>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="container">© <span id="y"></span> Morteza Imani · Gas Network Simulation</footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>

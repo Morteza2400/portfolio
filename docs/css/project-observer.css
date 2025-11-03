@@ -1,0 +1,75 @@
+/* ======= Observer project (scoped to this page) ======= */
+
+.project-observer .hero-card h1{ margin:0 0 6px }
+.project-observer .hero-card .pills{ margin-top:10px }
+
+/* Two-column page layout aligned with your base container width */
+.page-grid-observer{
+  display:grid;
+  grid-template-columns: 1.25fr 0.9fr;  /* left wider, right pdf a bit narrower */
+  gap:22px;
+  align-items:start;
+  margin-top:18px;
+}
+
+/* left column stacks cards with nice breathing room */
+.stack{ display:grid; gap:18px }
+.stack .grid2, .stack .grid3{ gap:20px }
+
+/* keep slight separation so borders never visually touch */
+.stack .card, .pdf-pane{ margin:1px }
+
+/* PDF pane: sticky and scrollable inside */
+.pdf-pane{
+  position:sticky;
+  top:84px; /* below your sticky nav */
+  height:calc(100vh - 120px);
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+.pdf-pane header{
+  padding-bottom:8px;
+  border-bottom:1px solid var(--line);
+  margin:8px 12px 8px;
+  color:var(--muted);
+}
+.pdf-pane .pdf-frame{
+  flex:1;
+  margin:0 8px 8px;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:#0b132a;
+}
+.pdf-pane iframe{ width:100%; height:100%; border:0 }
+
+/* lists with ticks */
+.ticks{ margin:8px 0 0; padding-left:18px }
+.ticks li{ margin:6px 0 }
+
+/* figures */
+.fig{ margin-top:10px }
+.fig img, .fig video{ width:100%; height:auto; border-radius:10px; display:block }
+
+/* simple bar viz for the mini interactive */
+.bars{ display:grid; gap:10px; margin-top:10px }
+.bar{ display:flex; align-items:center; gap:10px }
+.bar i{
+  display:block; flex:1; height:10px; border-radius:999px;
+  background: linear-gradient(90deg, var(--brand-2), var(--brand));
+}
+
+/* responsive: stack on small screens */
+@media (max-width: 1100px){
+  .page-grid-observer{ grid-template-columns: 1fr }
+  .pdf-pane{ position:static; height:70vh }
+}
+/* prevent large images from breaking cards */
+.card img {
+  display: block;
+  max-width: 100%;   /* never wider than the card */
+  height: auto;      /* keep aspect ratio */
+  border-radius: 10px;  /* match your design */
+  object-fit: contain;  /* shrink oversized images */
+}

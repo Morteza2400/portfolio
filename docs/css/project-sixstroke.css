@@ -1,0 +1,60 @@
+/* ======= Six-Stroke project (scoped) ======= */
+
+body.project-sixstroke .hero-card{
+  background:
+    linear-gradient(180deg, rgba(34,197,94,.10), transparent 60%),
+    linear-gradient(0deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+  border:1px solid var(--line);
+  margin:18px 0;
+}
+body.project-sixstroke h1{ margin:0 0 6px }
+body.project-sixstroke h2{ margin:0 0 10px }
+body.project-sixstroke .hero-card .pills{ margin-top:10px }
+
+/* Two-column layout */
+.six-grid{
+  display:grid;
+  grid-template-columns: 1.25fr 0.9fr;  /* left wider, right sticky pane */
+  gap:22px;
+  align-items:start;
+  margin-top:18px;
+}
+
+/* left column stacks cards */
+.stack{ display:grid; gap:18px }
+.stack .grid2, .stack .grid3{ gap:20px }
+.stack .card, .side-pane{ margin:1px }  /* keep borders from “kissing” */
+
+/* sticky side pane (like your PDF pane) */
+.side-pane{
+  position:sticky;
+  top:84px; /* below sticky nav */
+  height:calc(100vh - 120px);
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+.side-pane header{
+  padding-bottom:8px;
+  border-bottom:1px solid var(--line);
+  margin:8px 12px 8px;
+  color:var(--muted);
+}
+.side-pane .side-frame{
+  flex:1;
+  margin:0 8px 8px;
+  border-radius:12px;
+  overflow:auto;
+  border:1px solid var(--line);
+  background:#0b132a;
+  padding:12px;
+}
+
+/* figures */
+.card img{ width:100%; height:auto; border-radius:10px; display:block }
+
+/* responsive */
+@media (max-width: 1100px){
+  .six-grid{ grid-template-columns: 1fr }
+  .side-pane{ position:static; height:auto }
+}

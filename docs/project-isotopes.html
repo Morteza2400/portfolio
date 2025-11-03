@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Stable Isotope Separation – Industry Project | Morteza Imani</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <!-- Base site styles -->
+  <link rel="stylesheet" href="css/base.css">
+  <!-- Page-specific styles (your file) -->
+  <link rel="stylesheet" href="css/project-isotopes.css">
+</head>
+
+<body class="project-isotope">
+  <!-- NAV -->
+  <div class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html"><span class="dot"></span><strong>Morteza Imani</strong></a>
+      <nav>
+        <a href="index.html">About</a>
+        <a href="gis.html">GIS Showcase</a>
+        <a href="research.html">Research</a>
+        <a class="active" href="projects.html">Projects</a>
+        <a href="education.html">Education</a>
+        <a href="work.html">Work Experience</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="container isotope-grid">
+    <!-- LEFT COLUMN: content stack -->
+    <section class="stack">
+      <section class="card hero-card">
+        <h1>Stable Isotope Separation – Industrial Project</h1>
+        <p class="muted">
+          Senior Process Engineer & team lead at the Advanced Technologies Company (Iran), in collaboration with the Nuclear Research Technology Institute.
+          This program delivered a pilot <strong>20-centrifuge IR-1 square cascade</strong> for <strong>Tellurium-130</strong> and custom software for cascade design and optimization.
+          Due to confidentiality, this page provides a high-level overview; theoretical results are linked below.
+        </p>
+        <div class="pills">
+          <span class="pill">Process Design</span>
+          <span class="pill">Optimization & Algorithms</span>
+          <span class="pill">Industrial R&amp;D</span>
+        </div>
+      </section>
+
+      <!-- WHAT + MEDIA (two cards) -->
+      <section class="grid2">
+        <article class="card">
+          <h2>What we built</h2>
+          <ul class="ticks">
+            <li>Process design &amp; lead for a <strong>20-centrifuge square cascade</strong> (IR-1) pilot for Te-130.</li>
+            <li>Custom simulation &amp; optimization for <em>square</em>, <em>squared-off</em>, and <em>transient single-withdrawal</em> cascades.</li>
+            <li>Concept → pilot commissioning with operability and quality constraints.</li>
+          </ul>
+          <h3>Outcomes</h3>
+          <ul class="ticks">
+            <li>Pilot implemented; project commercialised domestically.</li>
+            <li>Peer-reviewed papers on cascade theory &amp; optimization (PSO, GWO, SSA, ANN).</li>
+          </ul>
+          <div class="meta" style="display:grid;grid-template-columns:100px 1fr;gap:6px;margin-top:10px">
+            <div><span class="muted">Role</span></div><div>Senior Process Engineer (team lead)</div>
+            <div><span class="muted">Org</span></div><div>Advanced Technologies Company × Nuclear Research Technology Institute</div>
+            <div><span class="muted">Focus</span></div><div>Process design, model development, optimization, pilot delivery</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>Media note</h2>
+          <p class="muted">
+            Public news item on stable isotopes:
+            <a href="https://en.irna.ir/news/84039010/AEOI-chief-Iran-masters-science-of-enriching-stable-isotopes" target="_blank" rel="noopener">
+              IRNA — “Iran masters science of enriching stable isotopes”
+            </a>.
+          </p>
+          <p class="muted"><strong>Confidentiality:</strong> operational detail is omitted; see publications for scientific results.</p>
+        </article>
+      </section>
+
+      <!-- TECH SCOPE -->
+      <section class="card">
+        <h2>Technical scope</h2>
+        <div class="grid3">
+          <div>
+            <h3>Custom modelling</h3>
+            <p class="muted">Multicomponent transport in square &amp; transient cascades; validated against literature.</p>
+          </div>
+          <div>
+            <h3>Optimization</h3>
+            <p class="muted">PSO / GWO / SSA and ANN surrogates to minimise feed and tune cuts/withdrawals.</p>
+          </div>
+          <div>
+            <h3>Engineering limits</h3>
+            <p class="muted">Holdup, interstage cuts, equipment bounds embedded into the search.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PUBLICATIONS -->
+      <section class="card">
+        <h2>Selected publications</h2>
+        <ul class="ticks">
+          <li><span class="muted">Progress in Nuclear Energy (2021)</span> — Flexible square cascade optimisation (enhanced PSO).
+            <a href="https://doi.org/10.1016/j.pnucene.2021.103922" target="_blank" rel="noopener">DOI</a></li>
+          <li><span class="muted">Annals of Nuclear Energy (2022)</span> — Overall optimisation of square &amp; squared-off cascades (Te-123).
+            <a href="https://doi.org/10.1016/j.anucene.2022.109033" target="_blank" rel="noopener">DOI</a></li>
+          <li><span class="muted">Nuclear Engineering and Technology (2023)</span> — 180W separation via transient SW cascade (Salp Swarm).
+            <a href="https://doi.org/10.1016/j.net.2022.12.008" target="_blank" rel="noopener">DOI</a></li>
+          <li><span class="muted">J. Nuclear Research &amp; Applications (2023)</span> — Grey Wolf optimisation for middle-isotope separation.
+            <a href="https://pdfs.semanticscholar.org/1346/795e1a72b50f266ea42af5470e88181bc18c.pdf" target="_blank" rel="noopener">PDF</a></li>
+          <li><span class="muted">Progress in Nuclear Energy (2020)</span> — Effect of holdup &amp; cascade shape in NFSW cascades.
+            <a href="https://doi.org/10.1016/j.pnucene.2019.103182" target="_blank" rel="noopener">DOI</a></li>
+        </ul>
+      </section>
+
+    </section><!-- /.stack -->
+
+    <!-- RIGHT COLUMN: sticky, scrollable PDF -->
+    <aside class="card pdf-pane" aria-label="Publication PDF">
+      <header><strong>Read published papers for this project (scroll)</strong></header>
+      <div class="pdf-frame">
+        <!-- Put your PDFs in /papers/; this will render inside the pane -->
+        <iframe id="pdfFrame"
+                src="papers/paper_cascade_3.pdf#view=FitH&toolbar=1&navpanes=0"
+                title="Isotope paper"></iframe>
+      </div>
+      <div class="pdf-switch" style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 8px 12px">
+        <button class="btn small" data-src="papers/paper_cascade_3.pdf">Paper 1</button>
+        <button class="btn small" data-src="papers/paper_cascade_1.pdf">Paper 2</button>
+        <button class="btn small" data-src="papers/paper_cascade_2.pdf">Paper 3</button>
+        <button class="btn small" data-src="papers/paper_cascade_4.pdf">Paper 4</button>
+        <button class="btn small" data-src="papers/paper_cascade_5.pdf">Paper 5</button>
+        <button class="btn small" data-src="papers/paper_cascade_6.pdf">Paper 6</button>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="container">© <span id="y"></span> Morteza Imani · Projects</footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+
+  <!-- Tiny JS: swap PDFs inside the iframe -->
+  <script>
+  (function () {
+    const frame = document.getElementById('pdfFrame');
+    const buttons = document.querySelectorAll('.pdf-switch button');
+
+    function setPdf(src, btn){
+      // force reload so browsers don’t cache the same URL
+      const stamp = 't=' + Date.now();
+      const joiner = src.includes('#') ? '&' : (src.includes('?') ? '&' : '?');
+      frame.src = src + joiner + stamp + '#view=FitH&toolbar=1&navpanes=0';
+
+      // update active button UI
+      buttons.forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => setPdf(btn.dataset.src, btn));
+    });
+
+    // mark the initial one active if it matches the iframe
+    buttons[0]?.classList.add('active');
+  })();
+  </script>
+
+</body>
+</html>

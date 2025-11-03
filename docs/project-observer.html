@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Real-time State & Unknown Boundary Estimation – Morteza Imani</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <!-- shared site styles -->
+  <link rel="stylesheet" href="css/base.css">
+  <!-- page-scoped styles -->
+  <link rel="stylesheet" href="css/project-observer.css">
+</head>
+
+<body class="project-observer">
+  <!-- NAV (keep identical to other pages) -->
+  <div class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html"><span class="dot"></span><strong>Morteza Imani</strong></a>
+      <nav>
+        <a href="index.html">About</a>
+        <a href="gis.html">GIS Showcase</a>
+        <a href="research.html">Research</a>
+        <a class="active" href="projects.html">Projects</a>
+        <a href="education.html">Education</a>
+        <a href="work.html">Work Experience</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN: left content + right PDF -->
+  <main class="container page-grid-observer">
+    <!-- LEFT COLUMN -->
+    <section class="stack">
+      <!-- HERO -->
+      <section class="card hero-card">
+        <h1>Real-time Estimation of States & Unknown Boundary Conditions</h1>
+        <p class="muted">
+          Part of my PhD research at the University of Adelaide. We use the
+          <strong>Elastic Water Column Model (EWCM)</strong> to build a linear,
+          control-ready model of a pipeline, then combine a
+          <strong>High-Gain Observer (HGO)</strong> with a
+          <strong>Sliding-Mode Observer (SMO)</strong> to reconstruct both
+          internal states and <em>unmeasured demands/boundary heads</em> in real time.
+        </p>
+        <div class="pills">
+          <span class="pill">Unknown inputs (UIO)</span>
+          <span class="pill">HGO + SMO (two-stage)</span>
+          <span class="pill">EWCM state-space</span>
+        </div>
+      </section>
+
+      <!-- VALUE FOR UTILITIES -->
+      <section class="grid2">
+        <div class="card">
+          <h2>Why utilities care</h2>
+          <ul class="ticks">
+            <li>Estimate <strong>unmeasured demands</strong> and <strong>unknown heads</strong> from pressure sensors only.</li>
+            <li><strong>Real-time</strong> alternative to batch EM/WLS/ITA—no long replays.</li>
+            <li>Feeds alarms, control set-points, and <em>what-if</em> testing.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>What’s different</h2>
+          <p class="muted">
+            Classical UIOs need matching conditions rarely met in hydraulics. We
+            generate <em>auxiliary outputs</em> via HGO to recover matching, then
+            an SMO reconstructs states and unknown inputs with robust injection.
+          </p>
+        </div>
+      </section>
+
+      <!-- LAB VALIDATION -->
+      <section class="card">
+        <h2>Laboratory validation</h2>
+        <p class="muted">
+          Experiment in the Robin Hydraulics Laboratory: two tanks at the ends of a copper pipe,
+          two internal pressure sensors. The method tracks changing boundary heads with &lt;10% error despite model
+          uncertainty and noise.
+        </p>
+        <img src="img/projects/exp_observer.PNG" alt="State estimation plots" onerror="this.style.display='none'" />
+        <!-- Optional short looping clip of the experiment or Simulink – replace sources when ready -->
+        <!--
+        <figure class="fig">
+          <video autoplay muted loop playsinline preload="auto" poster="img/observer_poster.jpg" style="width:100%;height:auto;border-radius:10px">
+            <source src="media/observer_lab.mp4" type="video/mp4">
+            <source src="media/observer_lab.webm" type="video/webm">
+          </video>
+          <figcaption class="muted">Looping clip: lab setup & observer tracking.</figcaption>
+        </figure>
+        -->
+      </section>
+
+    </section>
+
+    <!-- RIGHT COLUMN: sticky PDF -->
+    <aside class="card pdf-pane" aria-label="Publication PDF">
+      <header><strong>Publication (PDF)</strong></header>
+      <div class="pdf-frame">
+        <!-- rename your file or adjust path; keep toolbar but hide nav panes -->
+        <iframe
+          src="papers/observer-ewcm.pdf#view=FitH&toolbar=1&navpanes=0"
+          title="Observer paper"
+          loading="lazy">
+        </iframe>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="container">© <span id="y"></span> Morteza Imani · Observer (EWCM)</footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+
+  <!-- tiny JS for the slider demo -->
+  <script>
+    const s  = document.getElementById('uamp');
+    const v  = document.getElementById('uVal');
+    const est= document.getElementById('est');
+    const err= document.getElementById('err');
+
+    function updateBars(){
+      const a = parseFloat(s.value);       // 0.1 .. 1.0
+      v.textContent = a.toFixed(1);
+      const estPct = 20 + a*70;            // 27..90
+      const errPct = Math.max(6, 22 - a*12); // 10..6
+      est.style.width = estPct + '%';
+      err.style.width = errPct + '%';
+    }
+    s.addEventListener('input', updateBars);
+    updateBars();
+  </script>
+</body>
+</html>

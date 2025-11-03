@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Morteza Imani — Projects</title>
+  <meta name="description" content="Projects in hydraulic modelling, state estimation, modal analysis, isotope separation, and nuclear fuel analysis." />
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="css/projects.css">
+</head>
+<body class="projects">
+  <div class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html"><span class="dot"></span><strong>Morteza Imani</strong></a>
+      <nav>
+        <a href="index.html">About</a>
+        <a href="gis.html">GIS Showcase</a>
+        <a href="research.html">Research</a>
+        <a class="active" href="projects.html">Projects</a>
+        <a href="education.html">Education</a>
+        <a href="work.html">Work Experience</a>
+        
+      </nav>
+    </div>
+  </div>
+  <header class="hero--compact">
+    <p class="muted">Selected work</p>
+    <h1>Projects across hydraulic modelling, process design and optimization, and nuclear engineering</h1>
+  </header>
+  <main class="grid">
+<!-- 1. EWCM analysis -->
+<article class="card" id="ewcm-analysis">
+  <div class="thumb">
+    <span class="pill" title="Hydraulics">
+      <!-- leaf icon -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 21C11 21 18 17 18 10C18 5 14 3 11 3C8 3 6 5 6 8C6 12 11 12 11 12"></path><path d="M2 20L22 4"></path></svg>
+      Hydraulics
+    </span>
+    <img src="img/projects/PRV.gif" alt="EWCM simulation visualisation" onerror="this.style.display='none'" />
+  </div>
+  <div class="content">
+    <h3>Elastic Water Column Model (EWCM) Analysis of Water Distribution Systems</h3>
+    <div class="tag-row">
+      <span class="tag">Transient analysis</span>
+      <span class="tag">Water Distribution modelling</span>
+      <span class="tag">Pressure Reducing valve and Pump</span>
+    </div>
+    <p>Developed and applied a physics‑based EWCM that captures water compressibility and pipe elasticity. Benchmarked against MOC and RWCM, quantified stiffness, and highlighted the control‑friendly state‑space form.</p>
+    <div class="actions">
+      <a class="btn primary" href="project-ewcm.html" target="_blank" rel="noopener">
+        Learn more
+      </a>
+    </div>
+  </div>
+</article>
+
+<!-- 2. Real-time state estimation -->
+<article class="card" id="wds-estimation">
+  <div class="thumb">
+    <span class="pill" title="Estimation">⚡ Estimation</span>
+    <img src="img/projects/estimation.PNG" alt="State estimation plots" onerror="this.style.display='none'" />
+  </div>
+  <div class="content">
+    <h3>Real‑Time State Estimation of Water Distribution Systems</h3>
+    <div class="tag-row">
+      <span class="tag">Water Distribution modelling</span>
+      <span class="tag">Unknown demand estimation</span>
+      <span class="tag">Unknown pressure boundary estimation</span>
+    </div>
+    <p>Integrated EWCM with EKF/UKF/PF to estimate pressures and flows under sensor noise and unknown demands. Validated on multi‑pipe benchmarks and experimental datasets; supports anomaly detection.</p>
+    <div class="actions">
+      <a class="btn primary" href="project-observer.html" target="_blank" rel="noopener">
+        Learn more
+      </a>
+    </div>
+  </div>
+</article>
+
+<!-- 3. Modal Analysis -->
+<article class="card" id="modal-analysis">
+  <div class="thumb">
+    <span class="pill" title="Dynamics">🎚 Modal</span>
+    <img src="img/projects/modal.jpg" alt="Modal shapes/participation factors" onerror="this.style.display='none'" />
+  </div>
+  <div class="content">
+    <h3>Modal Analysis of Water Distribution Systems</h3>
+    <div class="tag-row">
+      <span class="tag">Modes & resonance</span>
+      <span class="tag">Participation factors</span>
+    </div>
+    <p>Linearised EWCM used for network‑level modal decomposition. Computed resonance frequencies and spatial participation to identify vulnerable assets beyond traditional FRD insights.</p>
+    <div class="actions">
+      <a class="btn primary" href="project-modal.html" target="_blank" rel="noopener">
+        Learn more
+      </a>
+    </div>
+  </div>
+</article>
+
+<!-- 4. Process optimisation for isotope separation -->
+<article class="card" id="isotope-optimisation">
+  <div class="thumb">
+    <span class="pill" title="Optimisation">🧮 Optimisation</span>
+    <img src="img/projects/cascade.PNG" alt="Centrifuge cascade optimisation" onerror="this.style.display='none'" />
+  </div>
+  <div class="content">
+    <h3>Optimisation of Process Parameters for Xe, W‑180 & Te Isotope Separation</h3>
+    <div class="tag-row">
+      <span class="tag">Multi‑objective Optimisation</span>
+      <span class="tag">Process Design</span>
+      <span class="tag">Isotope concetration Simulation</span>
+    </div>
+    <p>Designed and Optimised gas centrifuge cascades for multi component stable isotope separation
+       Explored transient and steady operating cascades.</p>
+    <div class="actions">
+      <a class="btn primary" href="project-isotopes.html" target="_blank" rel="noopener">
+        Learn more
+      </a>
+    </div>
+  </div>
+</article>
+
+<!-- 5. Gas dynamic pipe network simulator for cascades -->
+<article class="card" id="gas-dynamic-sim">
+  <div class="thumb">
+    <span class="pill" title="Simulation">🧪 Simulation</span>
+    <img src="img/projects/Gas_cent_simulation.png" alt="Gas dynamic network solver" onerror="this.style.display='none'" />
+  </div>
+  <div class="content">
+    <h3>Custom Code for Gas‑Dynamic Pipe Networks in Centrifuge Cascades</h3>
+    <div class="tag-row">
+      <span class="tag">Compressible flow</span>
+      <span class="tag">Gas Network Simulation</span>
+    </div>
+    <p>Python/MATLAB solver for transient compressible flow, inter‑stage coupling, and pressure balancing across complex cascade geometries.</p>
+    <div class="actions">
+      <a class="btn primary" href="project-hydrodynamic.html" target="_blank" rel="noopener">
+        Learn more
+      </a>
+    </div>
+  </div>
+</article>
+
+
+<!-- 7. Environmental Radioactivity Risk -->
+<article class="card" id="xe-te-design">
+  <div class="thumb">
+    <img src="img/projects/env_pic_2.PNG" alt="Xe and Te cascade diagrams" onerror="this.style.display='none'" />
+  </div>
+  <div class="content">
+    <h3>Environmental Radioactivity Risk Mapping</h3>
+    <div class="tag-row">
+      <span class="tag">Radon & Thoron</span>
+      <span class="tag">CFD simulation</span>
+      <span class="tag">Risk mapping</span>
+    </div>
+    <p>
+      Collaborative project with the Nuclear Science & Technology Research Institute to 
+      <strong>measure, simulate, and map environmental radioactivity</strong> in Iranian cities. 
+      Combined field radon/thoron data, geogenic indicators, and CFD air-circulation simulations 
+      to locate high-risk zones, quantify population dose, and guide new 
+      <em>building ventilation and construction regulations</em>.
+    </p>    
+    <div class="actions">
+      <a class="btn primary" href="project-environment.html" target="_blank" rel="noopener">
+        Learn more
+      </a>
+    </div>
+  </div>
+</article>
+
+<!-- 8. IR-FRA fuel rod thermomechanical code -->
+<article class="card" id="ir-fra">
+  <div class="thumb">
+    <span class="pill" title="Nuclear">☢ Fuel analysis</span>
+    <img src="img/projects/fuel_rod.PNG" alt="Fuel rod thermomechanical analysis" onerror="this.style.display='none'" />
+  </div>
+  <div class="content">
+    <h3>IR‑FRA: Thermomechanical Analysis of Fuel Rods (PWR)</h3>
+    <div class="tag-row">
+      <span class="tag">Heat‑structure coupling</span>
+      <span class="tag">FGR models</span>
+      <span class="tag">Mechanical analysis</span>
+      <span class="tag">Thermal analysis</span>
+    </div>
+    <p>Code coupling heat conduction, stress/strain, and fission‑gas‑release to predict fuel behaviour across operating cycles and transients in pressurised water reactors.</p>
+    <div class="actions">
+      <a class="btn primary" href="project-IRfra.html" target="_blank" rel="noopener">
+        Learn more
+      </a>
+    </div>
+  </div>
+</article>
+    <article class="card" id="six-stroke-engine">
+  <div class="thumb">
+    <span class="pill" title="Nuclear">☢ Fuel analysis</span>
+    <img src="img/projects/engine.jpg" alt="Fuel rod thermomechanical analysis" onerror="this.style.display='none'" />
+  </div>
+  <div class="content">
+    <h3>Designing a New Novel 6 stroke Engine</h3>
+    <div class="tag-row">
+      <span class="tag">Thermodynamic cycle</span>
+      <span class="tag">Water injection</span>
+      <span class="tag">Timing system design</span>
+      <span class="tag">Fabrication & welding</span>
+    </div>
+    <p>
+      Experimental project at <strong>Shahrood University of Technology</strong> 
+      to modify a 4-stroke engine by changing valve timing and adding two new strokes for 
+      <em>water injection and steam expansion</em>. 
+      The team designed and built custom mechanical parts, machined and welded the setup, 
+      and implemented a high-pressure water-injection system to demonstrate power recovery 
+      from exhaust heat.
+    </p>   
+    <div class="actions">
+      <a class="btn primary" href="project-sixstroke.html" target="_blank" rel="noopener">
+        Learn more
+      </a>
+    </div>
+  </div>
+</article>
+  </main>
+  <script>
+    // Optional: if no <img> loaded, the gradient thumb remains. Also allow hash navigation without jank.
+    (function(){
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click', e=>{
+          const id=a.getAttribute('href').slice(1); if(!id) return;
+          const el=document.getElementById(id); if(!el) return;
+          e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'});
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

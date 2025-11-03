@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Environmental Radioactivity Risk Mapping — Morteza Imani</title>
+  <meta name="description" content="City-scale indoor radon/thoron assessment, risk mapping, and CFD-based ventilation analysis for policy and building guidance."/>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/project-environment.css">
+</head>
+
+<body class="project-page">
+  
+
+  <!-- Consistent global nav -->
+  <div class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html"><span class="dot"></span><strong>Morteza Imani</strong></a>
+      <nav>
+        <a href="index.html">About</a>
+        <a href="gis.html">GIS Showcase</a>
+        <a href="research.html">Research</a>
+        <a class="active" href="projects.html">Projects</a>
+        <a href="education.html">Education</a>
+        <a href="work.html">Work Experience</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container env-grid">
+    <!-- Hero -->
+     <section class="stack">
+        <section class="hero">
+        <h1>Environmental Radioactivity Risk Mapping</h1>
+        <p class="sub">
+            Partnering with the Nuclear Science &amp; Technology Research Institute (NSTRI) and collaborators, 
+            I helped measure, model, and map indoor radon/thoron exposure across urban areas, 
+            identify high-risk zones, and test mitigation via ventilation using CFD.
+        </p>
+
+        <div class="hero-meta">
+            <span class="pill">Collaboration: NSTRI</span>
+            <span class="pill">Focus: Indoor Radon/Thoron, Risk, CFD</span>
+            <span class="pill">Outputs: City heat maps, dose/risk, guidance</span>
+        </div>
+        </section>
+
+        <!-- Executive summary -->
+        <section class="card">
+        <h2>Executive summary</h2>
+        <p>
+            Iran has pockets of elevated natural background radiation and radon exhalation from soil/building materials.
+            Our program measured indoor radon and thoron concentrations (multi-season), soil-gas radon, and indoor/outdoor
+            gamma; produced city-scale indoor radon maps; and quantified annual effective doses, excess lifetime cancer risk,
+            and expected lung-cancer cases per million. We also built CFD models to evaluate how natural ventilation,
+            air-change rates, and room layout affect occupant exposure and to translate findings into building guidance
+            (ventilation targets, critical zones, and material considerations).
+        </p>
+        <ul class="bullets two-col">
+            <li>Measured 222Rn/220Rn indoors over summer/winter using CR-39 (RADUET/NRPB) and active monitors.</li>
+            <li>Measured soil-gas 222Rn; linked geogenic signal with indoor levels.</li>
+            <li>Computed annual effective dose &amp; risk metrics for residents and workers.</li>
+            <li>Mapped city exposure (1×1 km grid) with IDW/Kriging and cross-validated (MAE/RMSE).</li>
+            <li>Validated CFD room simulations (ANSYS Fluent) against active &amp; passive measurements.</li>
+            <li>Delivered policy-ready heat maps and mitigation guidance for building codes and ventilation.</li>
+        </ul>
+        </section>
+
+        <!-- Methods & tooling -->
+        <section class="card">
+        <h2>Measurement &amp; modelling workflow</h2>
+        <div class="grid2">
+            <div>
+            <h3>Field measurements</h3>
+            <ul class="checked">
+                <li>Indoor 222Rn/220Rn (two seasons, ground-floor living rooms, 78+ dwellings).</li>
+                <li>Soil-gas radon (CR-39 in PVC wells, low-moisture season), plus gamma dose surveys.</li>
+                <li>Personal radon dosimetry for occupational groups to estimate dose by job/hrs.</li>
+            </ul>
+            <h3>Risk &amp; mapping</h3>
+            <ul class="checked">
+                <li>Annual effective dose and ELCR/LCC calculations (UNSCEAR/ICRP factors).</li>
+                <li>Indoor radon map (1×1 km cells) using IDW, OK, EBK — selected by MAE/RMSE.</li>
+            </ul>
+            </div>
+            <div>
+            <h3>CFD ventilation analysis</h3>
+            <ul class="checked">
+                <li>Finite-volume CFD (Fluent) with species transport for 222Rn and measured exhalation flux.</li>
+                <li>Scenarios: door open/closed; ACH 0.3–4.3 h<sup>−1</sup>; humidity sensitivity.</li>
+                <li>Validation with AlphaGUARD/RAD7 &amp; CR-39; typical errors 2–11% at 1 ACH.</li>
+                <li>Design outputs: breathing-zone concentrations, hotspots near floor &amp; low-velocity corners, 
+                    ventilation set-points meeting reference levels.</li>
+            </ul>
+            </div>
+        </div>
+        </section>
+
+        <!-- Outcomes -->
+        <section class="card">
+        <h2>Key outcomes</h2>
+        <ul class="bullets two-col">
+            <li>Seasonality confirmed: winter levels &gt; summer; ventilation is decisive.</li>
+            <li>City heat map highlights central/southern districts as higher-risk cells in studied case.</li>
+            <li>Average residential annual dose dominated by radon/thoron fraction of indoor dose budget.</li>
+            <li>Workplace assessment: office staff may exceed miners due to poor ventilation &amp; materials.</li>
+            <li>CFD pinpoints where to place inlets/outlets and what ACHs achieve target reference levels.</li>
+            <li>Evidence package informed draft guidance on ventilation and material choices.</li>
+        </ul>
+        <div class="note">
+            <strong>Impact:</strong> Findings were used by the Nuclear Science &amp; Technology Research Institute to
+            support proposed building regulations aimed at radon mitigation (ventilation targets and material considerations).
+        </div>
+        </section>
+
+        <!-- Visuals (optional images) -->
+        <section class="card">
+        <h2>Selected visuals</h2>
+        <div class="gallery">
+            <!-- Drop your map/room images here when ready -->
+            <figure class="img"><img src="img\projects\env_pic_1.PNG" /></figure>
+            <figure class="img"><img src="img\projects\env_pic_2.PNG" /></figure>
+            <figure class="img"><img src="img\projects\env_pic_3.PNG" /></figure>
+        </div>
+      
+        </section>
+
+        <!-- CTA -->
+        <section class="card">
+        <h2>How this helps industry &amp; cities</h2>
+        <div class="grid2">
+            <div>
+            <h3>For regulators &amp; planners</h3>
+            <ul class="checked">
+                <li>Prioritize inspections by heat-map risk rank.</li>
+                <li>Codify ventilation set-points (ACH) for reference levels.</li>
+                <li>Target materials testing in high-risk districts.</li>
+            </ul>
+            </div>
+            <div>
+            <h3>For building owners</h3>
+            <ul class="checked">
+                <li>Ventilation upgrades scoped by CFD hotspots.</li>
+                <li>Material selection guidance (NORMs awareness).</li>
+                <li>Simple monitoring plans with actionable thresholds.</li>
+            </ul>
+            </div>
+        </div>
+        </section>
+    </section>
+       <!-- RIGHT COLUMN: sticky, scrollable PDF -->
+    <aside class="card pdf-pane" aria-label="Publication PDF">
+      <header><strong>Read published papers for this project (scroll)</strong></header>
+      <div class="pdf-frame">
+        <!-- Put your PDFs in /papers/; this will render inside the pane -->
+        <iframe id="pdfFrame"
+                src="papers/Envi_paper_1.pdf#view=FitH&toolbar=1&navpanes=0"
+                title="Isotope paper"></iframe>
+      </div>
+      <div class="pdf-switch" style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 8px 12px">
+        <button class="btn small" data-src="papers/Envi_paper_1.pdf">Paper 1</button>
+        <button class="btn small" data-src="papers/Envi_paper_3.pdf">Paper 2</button>
+        <button class="btn small" data-src="papers/Envi_paper_5.pdf">Paper 3</button>
+        <button class="btn small" data-src="papers/Envi_paper_4.pdf">Paper 4</button>
+        <button class="btn small" data-src="papers/Envi_paper_2.pdf">Paper 5</button>
+        <button class="btn small" data-src="papers/Envi_paper_6.pdf">Paper 6</button>
+      </div>
+    </aside>
+
+    <footer>© <span id="y"></span> Morteza Imani · <a href="research.html">More publications</a></footer>
+  </main>
+
+  <script>
+    // footer year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+  <script>
+    (function () {
+        const frame = document.getElementById('pdfFrame');
+        const buttons = document.querySelectorAll('.pdf-switch button');
+
+        function setPdf(src, btn){
+        // force reload so browsers don’t cache the same URL
+        const stamp = 't=' + Date.now();
+        const joiner = src.includes('#') ? '&' : (src.includes('?') ? '&' : '?');
+        frame.src = src + joiner + stamp + '#view=FitH&toolbar=1&navpanes=0';
+
+        // update active button UI
+        buttons.forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+        }
+
+        buttons.forEach(btn => {
+        btn.addEventListener('click', () => setPdf(btn.dataset.src, btn));
+        });
+
+        // mark the initial one active if it matches the iframe
+        buttons[0]?.classList.add('active');
+    })();
+  </script>
+
+</body>
+</html>

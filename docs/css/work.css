@@ -1,0 +1,95 @@
+/* ======= Work Experience page (full-width layout) ======= */
+
+/* Consistent hero spacing */
+.page-work .hero {
+  padding: 2.5rem 0 1rem;
+}
+
+/* Make the page single-column and full width */
+.work-grid {
+  display: block;
+  margin-top: 18px;
+}
+
+/* Stack all cards evenly with consistent gaps */
+.stack {
+  display: grid;
+  gap: 18px;
+  max-width: 1300px;      /* keeps nice readable width */
+  margin: 0 auto;         /* centers it */
+}
+
+/* Optional: make cards fill more horizontal space on large screens */
+.stack .card {
+  width: 100%;
+  margin: 0;
+}
+
+/* Job cards */
+.job + .job {
+  margin-top: 0;
+}
+.job .header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.job .date {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Tick bullet style */
+.ticks {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+.ticks li {
+  margin: 6px 0;
+  position: relative;
+  padding-left: 1.3rem;
+  line-height: 1.55;
+}
+.ticks li::before {
+  content: "✓";
+  color: var(--brand);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  padding: 0;
+}
+.tags li {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.85rem;
+}
+
+/* Responsive adjustments (not really needed since it's one column now) */
+@media (max-width: 1100px) {
+  .stack {
+    max-width: 95%;
+  }
+}
+.hero{
+  padding: 0 40px;
+  margin: 0 auto; 
+}
+/* Add left/right breathing room for the Work page */
+.page-work .work-grid {
+  padding-inline: clamp(20px, 4vw, 48px);
+}
+
+/* (Optional) slightly larger inner padding on the hero card */
+.page-work .hero.card {
+  padding: 24px 32px;
+}

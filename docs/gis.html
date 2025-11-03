@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>GIS Showcase – Morteza Imani</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <!-- Leaflet + Esri (same versions you’re using) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/esri-leaflet@3.0.11/dist/esri-leaflet.js"></script>
+
+  <!-- MarkerCluster + Esri Leaflet Cluster -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+  <script src="https://unpkg.com/esri-leaflet-cluster@3.0.0/dist/esri-leaflet-cluster.js"></script>
+
+  <!-- Charts + Turf -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://unpkg.com/@turf/turf@6.5.0/turf.min.js"></script>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/gis.css">
+</head>
+<body>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html"><span class="dot"></span><strong>Morteza Imani</strong></a>
+      <nav>
+        <a href="index.html">About</a>
+        <a class="active" href="gis.html">GIS Showcase</a>
+        <a href="research.html">Research</a>
+        <a href="projects.html">Projects</a>
+        <a href="education.html">Education</a>
+        <a href="work.html">Work Experience</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container container--gis page-grid">
+    <!-- MAP -->
+    <section class="card map-card">
+      <h2>Interactive Map (Demo)</h2>
+      <p class="muted">
+        This page is a demonstration of my web-GIS development skills. Layers are pulled from
+        <a href="https://location.sa.gov.au/viewer" target="_blank" rel="noopener">LocationSA</a>
+        public services and are shown for illustration only — the data may be incomplete or out of date. 
+        The hydrant and pillar hydrant data are dynamically <b>clustered</b> to enhance performance and provide clearer spatial insights.
+        As you zoom and pan, the <strong>Analytics</strong> card on the right recalculates for the current view.
+        The filter supports pipe diameter selection (e.g., “≥ 150 mm”) for quick summaries.
+      </p>
+      <div id="map"></div>
+      <div id="filter-css-hook"></div>
+      <p class="muted" id="scaleHint"></p>
+    </section>
+
+    <!-- LEGEND (narrow, fixed width) -->
+    <aside class="card legend-card">
+      <h2>Legend</h2>
+      <p class="muted">Use the layer control on the map (top-right) to toggle data. Hydrant layers are clustered for performance.</p>
+      <ul>
+        <li><span style="color:#1e88e5">■</span> Water Main</li>
+        <li><span style="color:#6f42c1">■</span> Reclaimed Main</li>
+        <li><span style="color:#14b8a6">■</span> WW Gravity</li>
+        <li><span style="color:#789262">■</span> WW Low Pressure</li>
+        <li><span style="color:#ec4899">■</span> WW Pumping</li>
+        <li><span style="color:#8d6e63">■</span> WW Vacuum</li>
+        <li>● Hydrant (red), ● Pillar Hydrant (orange)</li>
+        <li>■ Fire Ban Districts (amber fill)</li>
+      </ul>
+    </aside>
+
+    <!-- STATISTICS -->
+    <section class="card stats-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <h2 style="margin:0">Analytics (Current View)</h2>
+        <div>
+          <label for="diamMin">Filter Water Mains ≥</label>
+          <input id="diamMin" type="number" min="0" step="1" placeholder="mm" style="width:100px">
+          <button id="applyFilter" class="btn" type="button">Apply</button>
+          <button id="clearFilter" class="btn" type="button">Clear</button>
+          <button id="refreshBtn" class="btn" type="button">Refresh</button>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <figure class="chart"><canvas id="barChart"></canvas></figure>
+        <figure class="chart"><canvas id="pieChart"></canvas></figure>
+      </div>
+
+      <div class="grid2">
+        <table id="summaryTable" class="tbl">
+          <thead><tr><th>Metric</th><th>Value</th></tr></thead><tbody></tbody>
+        </table>
+        <table id="diamTable" class="tbl">
+          <thead><tr><th>Nominal Diameter (mm)</th><th>Length in View (km)</th></tr></thead><tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">© <span id="y"></span> Morteza Imani · GIS Showcase</footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+  <main class="container page-grid"></main>
+  <!-- Your existing logic -->
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GIS Growth & Demand Analysis</title>
+
+  <!-- Leaflet + Esri + Turf + Chart.js -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/esri-leaflet@3.0.11/dist/esri-leaflet.js"></script>
+  <script src="https://unpkg.com/@turf/turf@6.5.0/turf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <style>
+    body{margin:0;font-family:system-ui;background:#0b1020;color:#e6edf6}
+    #map{height:70vh}
+    table{border-collapse:collapse;width:100%;margin-top:8px}
+    th,td{border:1px solid #333;padding:4px 8px;font-size:13px}
+    th{background:#111}
+  </style>
+</head>
+<body>
+
+  <h1 style="padding:12px 16px">Growth & Demand Readiness (Demo)</h1>
+  <div id="map"></div>
+  <div id="output" style="padding:12px 16px">
+    <h3>Calculated Readiness Index (sample)</h3>
+    <table id="resultTbl">
+      <thead><tr><th>Area Name</th><th>Water Dist (km)</th><th>WW Dist (km)</th><th>PipeLen (km)</th><th>Readiness</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+    <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+    <script src="js/gis_analysis.js"></script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>EWCM — Transient Modelling for Water Networks</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <!-- your site base + (optional) projects.css if you have it -->
+  <link rel="stylesheet" href="css/base.css">
+  <!-- page-scoped css -->
+  <link rel="stylesheet" href="css/project-ewcm.css">
+</head>
+<body class="project-ewcm">
+  <!-- NAV (kept identical to other pages) -->
+  <div class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html"><span class="dot"></span><strong>Morteza Imani</strong></a>
+      <nav>
+        <a href="index.html">About</a>
+        <a href="gis.html">GIS Showcase</a>
+        <a href="research.html">Research</a>
+        <a class="active" href="projects.html">Projects</a>
+        <a href="education.html">Education</a>
+        <a href="work.html">Work Experience</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- PAGE CONTENT -->
+    <main class="container ewcm-grid">
+    <!-- LEFT: content stack -->
+    <section class="stack">
+    <!-- HERO -->
+    <section class="card hero-card">
+    <h1>Elastic Water Column Model (EWCM) with Dynamic Elements</h1>
+    <p class="muted">
+        This work is part of my PhD research at the University of Adelaide, focused on developing an
+        advanced transient model for water distribution systems (WDSs). The EWCM provides a fast,
+        controllable, and physics-based framework that incorporates dynamic components such as PRVs and
+        pumps, supporting both operational analysis and real-time control in modern water networks.
+    </p>
+    <div class="pills">
+        <span class="pill">Hydraulic Transients</span>
+        <span class="pill">PRV & Pump Dynamics</span>
+        <span class="pill">State-Space / ODEs</span>
+    </div>
+    </section>
+
+    <!-- PROBLEM / OUTCOME -->
+    <section class="grid2">
+    <div class="card">
+        <h2>What problem does this solve?</h2>
+        <p class="muted">Utilities need to simulate both gradual operations (PRV setpoint changes) and sudden events (pump trips, fast valve operations) without long run times. EWCM handles both in one framework and scales efficiently on large networks.</p>
+    </div>
+    <div class="card">
+        <h2>What’s the outcome for operators?</h2>
+        <ul class="ticks">
+        <li>Preview pressure impacts of PRV changes and pump ramps before implementing.</li>
+        <li>Identify vulnerable assets under fast transients and compare mitigation options.</li>
+        <li>Use the state-space form for controller design, alarms, and scenario testing.</li>
+        </ul>
+    </div>
+    </section>
+
+
+    <section class="card">
+        <h2>Interactive concept: Accuracy vs Runtime</h2>
+        <p class="muted">
+        The performance of the model can be tuned through discretization, unlike the Rigid Water Column Model.
+        Its runtime is significantly faster than the Method of Characteristics, which is implemented in
+        commercial tools such as HAMMER commonly used in the water industry.
+        </p>
+        <!-- OPTIONAL: animated slide as a high-quality video -->
+        <figure class="fig" style="margin-top:12px">
+            <video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+            poster="img/ewcm_poster.jpg"
+            style="width:100%;height:auto;border-radius:10px">
+            <source src="media/ewcm_animation.mp4" type="video/mp4">
+            <source src="media/ewcm_animation.webm" type="video/webm">
+            Sorry, your browser doesn’t support embedded video.
+            </video>
+        </figure>
+    </section>
+    <!-- RESULTS / FIGURES -->
+
+        <!-- HOW IT WORKS -->
+    <section class="card">
+    <h2>How it works</h2>
+    <div class="grid3">
+        <div>
+        <h3>Network graph</h3>
+        <p class="muted">Pipes, PRVs, pumps are edges; nodes are junctions/reservoirs.</p>
+        </div>
+        <div>
+        <h3>ODE-based EWCM</h3>
+        <p class="muted">Elastic water column per pipe; accuracy increases with per-pipe “reaches”.</p>
+        </div>
+        <div>
+        <h3>Dynamic elements</h3>
+        <p class="muted">PRVs and pumps use actuator dynamics + algebraic head relations.</p>
+        </div>
+    </div>
+
+    <details class="details">
+        <summary>Show technical details</summary>
+        <div class="details-body">
+        <ul>
+            <li>Captures wave travel/fast events (vs RWCM) while remaining ODE/state-space (easier for control) compared to MOC.</li>
+            <li>Reaches per pipe tune fidelity for fast transients.</li>
+            <li>PRVs/pumps added as two-port dynamic components.</li>
+            <li>Sparse matrices reduce runtime/memory on big systems.</li>
+        </ul>
+        </div>
+    </details>
+    </section>
+
+    </section>
+
+    <!-- RIGHT: sticky PDF pane -->
+    <aside class="card pdf-pane" aria-label="Publication PDF">
+    <header><strong>Publication (PDF)</strong></header>
+    <div class="pdf-frame">
+    <iframe
+        src="papers/ewcm_paper.pdf#view=FitH&toolbar=1&navpanes=0"
+        title="EWCM Paper"
+        loading="lazy">
+    </iframe>
+    </div>
+    </aside>
+    </main>
+
+  <footer class="container">© <span id="y"></span> Morteza Imani · Projects</footer>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // tiny slider logic
+    (function(){
+      const reach=document.getElementById('reach');
+      const val=document.getElementById('reachVal');
+      const acc=document.querySelector('.bars .acc');
+      const time=document.querySelector('.bars .time');
+      const update = () => {
+        const r = Number(reach.value);
+        const accPct = Math.min(30 + r*6, 95);
+        const timePct= Math.min(20 + r*5, 90);
+        val.textContent = r;
+        acc.style.width = accPct + '%';
+        time.style.width= timePct + '%';
+      };
+      reach.addEventListener('input', update);
+    })();
+  </script>
+</body>
+</html>
