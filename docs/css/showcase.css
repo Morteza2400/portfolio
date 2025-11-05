@@ -1,0 +1,87 @@
+/* ---------- Showcase page styles ---------- */
+:root {
+  --gap: 24px;
+  --radius: 16px;
+  --elev-1: 0 6px 22px rgba(0, 0, 0, .18);
+  --elev-2: 0 16px 44px rgba(0, 0, 0, .35);
+  --card-bg: #0b0b0c;      /* falls back if base.css vars are different */
+  --border: #1f1f22;
+}
+
+main.showcase {
+  margin: 32px auto 28px;
+}
+
+/* Card grid spacing so cards aren’t stuck together */
+.cards {
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  margin-top: 14px;
+}
+
+/* Make the whole card clickable and polished */
+.link-card {
+  display: block;
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  overflow: hidden;                 /* clips the zoom so layout doesn't shift */
+  box-shadow: var(--elev-1);
+  transform: translateY(0) scale(1);
+  transform-origin: center;
+  transition:
+    transform .18s ease,
+    box-shadow .22s ease,
+    border-color .22s ease,
+    background-color .22s ease;
+  text-decoration: none;
+  color: inherit;
+  padding: 18px 18px 16px;          /* extra inner breathing room */
+}
+
+/* Subtle shine overlay on hover/focus (very light) */
+.link-card::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(120% 70% at 10% -10%, rgba(255,255,255,.06), transparent 50%);
+  opacity: 0; pointer-events: none;
+  transition: opacity .22s ease;
+}
+
+.link-card:hover,
+.link-card:focus-visible {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: var(--elev-2);
+  border-color: #2b2b31;
+}
+
+.link-card:hover::after,
+.link-card:focus-visible::after {
+  opacity: 1;
+}
+
+/* Typography rhythm inside cards */
+.link-card h3 { margin: 0 0 8px; line-height: 1.25; }
+.link-card p  { margin: 0; }
+.link-card .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.link-card .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+
+/* Keyboard focus ring for accessibility */
+.link-card:focus-visible {
+  outline: 3px solid #6aa9ff;
+  outline-offset: 2px;     /* sits just outside the card edge */
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .link-card,
+  .link-card::after { transition: none !important; }
+}
+
+/* Small screens: slightly tighter grid gap */
+@media (max-width: 420px) {
+  :root { --gap: 18px; }
+  .link-card { padding: 16px; }
+}
