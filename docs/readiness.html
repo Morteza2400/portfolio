@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Readiness Index – Morteza Imani</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/readiness.css">
+</head>
+<body>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html"><span class="dot"></span><strong>Morteza Imani</strong></a>
+      <nav>
+        <a href="index.html">About</a>
+        <a class="active" href="showcase.html">GIS Showcase</a>
+        <a href="research.html">Research</a>
+        <a href="projects.html">Projects</a>
+        <a href="education.html">Education</a>
+        <a href="work.html">Work Experience</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="page">
+    <!-- 1) INTRO (full width) -->
+    <section class="card intro">
+      <h2 class="section-title">Readiness Index for Future Urban Growth Areas</h2>
+      <div class="pills">
+        <span class="pill">Source: LocationSA (public)</span>
+        <span class="pill">Polygons: Layer 226 (Future Urban Growth Areas)</span>
+        <span class="pill">Lines: Water mains (full GeoJSON)</span>
+        <span class="pill">Processing: Python + GeoPandas (offline)</span>
+      </div>
+
+      <p class="muted">
+        The <strong>Readiness Index</strong> provides a simple comparative measure of how
+        well each <em>Future Urban Growth Area</em> is currently serviced by existing
+        water infrastructure. Its purpose is to help visualise and differentiate
+        growth areas based on the extent and strength of their surrounding water
+        network. The index is calculated offline using only geometric attributes of
+        water mains — specifically their length and diameter — to quantify both
+        <em>coverage</em> (network density) and <em>capacity</em> (pipe size).
+        Each area’s score is then normalized between 0 and 1, where higher values
+        indicate a more developed or better-serviced area.  
+        <br><br>
+        In a broader assessment, true readiness would also depend on additional
+        factors such as pressure zones, material type, age, condition, and planned
+        upgrades. However, due to data limitations, this first version focuses on
+        these two core, measurable indicators to illustrate a basic readiness pattern
+        across the metropolitan area.
+      </p>
+
+      <h3>Method</h3>
+      <ul class="muted">
+        <li><strong>Network density</strong> = total pipe length inside area / area size (km/km²).</li>
+        <li><strong>Diameter strength</strong>:
+          <ul>
+            <li><code>p90_diam</code> = length-weighted 90th percentile diameter (mm).</li>
+            <li><code>large_share</code> = share of pipe length with diameter ≥ <code>200 mm</code> (0–1).</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Formula</h4>
+      <pre class="code">readiness = 0.5 * norm(density)
+         + 0.3 * large_share
+         + 0.2 * norm(p90_diam)</pre>
+
+      <details>
+        <summary><strong>Workflow (exact steps)</strong></summary>
+        <ol class="muted">
+          <li>Download polygons (ID 226) and mains via ArcGIS REST (paginated 2,000 records).</li>
+          <li>Compute per-area metrics in GeoPandas (lengths, density, weighted percentiles).</li>
+          <li>Export: <code>site_data/readiness_by_area.geojson</code> + <code>site_data/readiness_by_area.csv</code>.</li>
+          <li>Publish this page; browser fetches GeoJSON/CSV only (no heavy client processing).</li>
+        </ol>
+      </details>
+
+      <h4>Table columns shown below</h4>
+      <ul class="muted">
+        <li><strong>Area Name</strong>: from polygon attribute <code>name</code>.</li>
+        <li><strong>Area ID</strong>: polygon key used to join results (<code>area_id</code>).</li>
+        <li><strong>Readiness</strong>: 0–1 score from formula above.</li>
+        <li><strong>Pipe km</strong>: total water main length within polygon.</li>
+        <li><strong>Density</strong>: pipe_km / area_km².</li>
+        <li><strong>p90 diam (mm)</strong>: length-weighted 90th percentile diameter.</li>
+        <li><strong>≥200mm share</strong>: proportion of pipe length ≥ 200 mm.</li>
+      </ul>
+    </section>
+
+    <!-- 2) MAP + LEGEND (two columns) -->
+    <section class="viz-row">
+      <div class="card">
+        <h3 class="section-title">Readiness Map</h3>
+        <p class="muted top-tight">Dark blues/purples indicate higher readiness. Click an area for details.</p>
+        <div id="map"></div>
+      </div>
+
+      <aside class="card legend">
+        <h3 class="section-title">Legend</h3>
+        <div class="line"><span class="swatch" style="background:#7fcdbb"></span>&lt; 0.10</div>
+        <div class="line"><span class="swatch" style="background:#41b6c4"></span>0.10 – 0.20</div>
+        <div class="line"><span class="swatch" style="background:#1d91c0"></span>0.20 – 0.40</div>
+        <div class="line"><span class="swatch" style="background:#225ea8"></span>0.40 – 0.60</div>
+        <div class="line"><span class="swatch" style="background:#253494"></span>0.60 – 0.80</div>
+        <div class="line"><span class="swatch" style="background:#081d58"></span>≥ 0.80</div>
+        <hr class="sep">
+        <p class="muted"><small>Source: LocationSA – Water mains + Future Urban Growth Areas (ID 226). Calculated offline; rendered from GeoJSON/CSV.</small></p>
+      </aside>
+    </section>
+
+    <!-- 3) TABLE (full width) -->
+    <section class="card table-card">
+      <div class="table-head">
+        <h3 class="section-title">Area Rankings</h3>
+        <div>
+          <input id="search" class="input" type="text" placeholder="Search area name or ID…">
+          <button id="resetBtn" class="btn" type="button">Reset</button>
+        </div>
+      </div>
+      <div class="tbl-wrap">
+        <table id="rankTbl" class="tbl">
+          <thead>
+            <tr>
+              <th style="width:42px">#</th>
+              <th>Area Name</th>
+              <th>Area ID</th>
+              <th style="width:110px">Readiness</th>
+              <th style="width:110px">Pipe km</th>
+              <th style="width:110px">Density</th>
+              <th style="width:120px">p90&nbsp;diam (mm)</th>
+              <th style="width:120px">≥200mm share</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="muted" style="margin-top:8px">Tip: Click a row to zoom the map to that area.</p>
+    </section>
+  </main>
+
+  <footer class="container">© <span id="y"></span> Morteza Imani · Readiness Index</footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+
+  <script>
+  // ---------- Config ----------
+  const GEO_URL = 'site_data/readiness_by_area.geojson';
+  const CSV_URL = 'site_data/readiness_by_area.csv';
+
+  // ---------- Map ----------
+  const map = L.map('map').setView([-34.93,138.6], 9);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 19}).addTo(map);
+
+  function color(v){
+    if(v==null) return '#888';
+    return v>0.8?'#081d58':
+           v>0.6?'#253494':
+           v>0.4?'#225ea8':
+           v>0.2?'#1d91c0':
+           v>0.1?'#41b6c4':'#7fcdbb';
+  }
+
+  // We'll load both GeoJSON and CSV.
+  // From GeoJSON we get a mapping: area_id -> area name
+  let areasLayer, idToName = new Map();
+
+  // 1) Load GeoJSON first (map + names)
+  const geoPromise = fetch(GEO_URL).then(r=>r.json()).then(geo=>{
+    // Build id -> name dictionary
+    geo.features.forEach(f=>{
+      const p = f.properties || {};
+      const id = p.area_id ?? p.objectid ?? p.OBJECTID;
+      const nm = p.name ?? p.area_name ?? String(id);
+      if (id !== undefined) idToName.set(String(id), nm);
+    });
+
+    areasLayer = L.geoJSON(geo, {
+      style: f => ({color:'#222', weight:1.2, fillOpacity:0.65, fillColor: color(f.properties.readiness)}),
+      onEachFeature: (f, l) => {
+        const p = f.properties;
+        const id = String(p.area_id);
+        const nm = idToName.get(id) || p.name || id;
+        const r  = p.readiness!=null ? (+p.readiness).toFixed(3) : 'N/A';
+        const km = p.pipe_km!=null ? (+p.pipe_km).toFixed(2) : '—';
+        const den= p.density!=null ? (+p.density).toFixed(3) : '—';
+        const p90= p.p90_diam!=null ? (+p.p90_diam).toFixed(0) : '—';
+        const ls = p.large_share!=null ? Math.round(+p.large_share*100)+'%' : '—';
+        l.bindPopup(`<b>${nm}</b><br>Readiness: ${r}<br>Pipe km: ${km}<br>Density: ${den}<br>p90 diam: ${p90} mm<br>≥200mm share: ${ls}`);
+        l._areaId = id; // attach for row zoom
+      }
+    }).addTo(map);
+    map.fitBounds(areasLayer.getBounds());
+
+    return true;
+  });
+
+  // 2) Load CSV (table), after we have names from GeoJSON
+  const csvPromise = fetch(CSV_URL).then(r=>r.text());
+
+  Promise.all([geoPromise, csvPromise]).then(([_, csvText])=>{
+    const rows  = csvText.trim().split(/\r?\n/).map(l=>l.split(','));
+    const header= rows.shift();
+    const col   = (n) => header.indexOf(n);
+    const iArea = col('area_id');
+    const iPipe = col('pipe_km');
+    const iDen  = col('density');
+    const iP90  = col('p90_diam');
+    const iLs   = col('large_share');
+    const iRead = col('readiness');
+
+    const data = rows.map(r=>({
+      area_id: r[iArea],
+      area_name: idToName.get(String(r[iArea])) || String(r[iArea]),
+      pipe_km: parseFloat(r[iPipe]||'0'),
+      density: parseFloat(r[iDen]||'0'),
+      p90:     parseFloat(r[iP90]||'0'),
+      ls:      parseFloat(r[iLs]||'0'),
+      readiness: parseFloat(r[iRead]||'0')
+    }));
+
+    data.sort((a,b)=> b.readiness - a.readiness);
+
+    const tbody = document.querySelector('#rankTbl tbody');
+    const fmt = (x, d=2) => isFinite(x) ? (+x).toFixed(d) : '—';
+
+    data.forEach((d, idx)=>{
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${idx+1}</td>
+        <td>${d.area_name}</td>
+        <td>${d.area_id}</td>
+        <td>${fmt(d.readiness,3)}</td>
+        <td>${fmt(d.pipe_km,2)}</td>
+        <td>${fmt(d.density,3)}</td>
+        <td>${fmt(d.p90,0)}</td>
+        <td>${Math.round(d.ls*100)}%</td>`;
+      tr.style.cursor = 'pointer';
+      tr.addEventListener('click', ()=>{
+        if(!areasLayer) return;
+        areasLayer.eachLayer(l=>{
+          const pid = String(l._areaId);
+          if(pid===String(d.area_id)){
+            map.fitBounds(l.getBounds(), {maxZoom: 12});
+            l.openPopup();
+          }
+        });
+      });
+      tbody.appendChild(tr);
+    });
+
+    const search = document.getElementById('search');
+    const reset  = document.getElementById('resetBtn');
+    search.addEventListener('input', ()=>{
+      const q = search.value.trim().toLowerCase();
+      [...tbody.rows].forEach(row=>{
+        const text = (row.cells[1].textContent + ' ' + row.cells[2].textContent).toLowerCase();
+        row.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
+    reset.addEventListener('click', ()=>{ search.value=''; search.dispatchEvent(new Event('input')); });
+  });
+  </script>
+</body>
+</html>
