@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>GIS & BI Showcase – Morteza Imani</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/showcase.css">  <!-- add this line -->
+  <!-- Optional: tiny page-specific polish -->
+  <style>
+    .cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:20px; }
+    .link-card { display:block; text-decoration:none; color:inherit; transition:transform .08s ease, box-shadow .2s ease; }
+    .link-card:hover, .link-card:focus { transform:translateY(-2px); box-shadow:0 16px 44px rgba(0,0,0,.45); outline:none; }
+    .link-card .meta { display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 0; }
+    .link-card .meta .pill { font-size:.8rem; }
+    .card .actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html"><span class="dot"></span><strong>Morteza Imani</strong></a>
+      <nav>
+        <a href="index.html">About</a>
+        <a class="active" href="showcase.html">GIS Showcase</a>
+        <a href="research.html">Research</a>
+        <a href="projects.html">Projects</a>
+        <a href="education.html">Education</a>
+        <a href="work.html">Work Experience</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container showcase" style="margin:32px auto 24px">
+    <!-- Intro -->
+    <section class="card">
+      <h2 style="margin:0 0 6px">GIS & BI Skill Showcase</h2>
+      <p class="muted">
+        This page is a hub for examples of my GIS and BI work. Pick a card below to jump straight
+        to the demo. I’ll add more examples over time as I build out new pieces.
+      </p>
+      <div class="pills" style="margin-top:10px">
+        <span class="pill">Web-GIS</span>
+        <span class="pill">Spatial Analytics</span>
+        <span class="pill">Dashboards & BI</span>
+      </div>
+    </section>
+
+    <!-- Cards -->
+    <section class="cards">
+
+      <!-- Readiness Index -->
+      <a class="card link-card" href="readiness.html" aria-label="Open Readiness Index showcase">
+        <h3 style="margin:0 0 6px">Readiness Index (Growth Areas)</h3>
+        <p class="muted" style="margin:0">
+          A simple, comparable index that scores each future urban growth area by
+          <em>coverage</em> (network density) and <em>capacity</em> (pipe size),
+          normalised to 0–1. Built offline from water-main geometry and published as a lightweight
+          web map + ranked table for quick exploration.
+        </p>
+        <div class="meta">
+          <span class="pill">Leaflet</span>
+          <span class="pill">GeoJSON + CSV</span>
+          <span class="pill">GeoPandas (offline)</span>
+        </div>
+        <div class="actions">
+          <span class="btn primary">Open Readiness Index</span>
+          <span class="btn outline">Learn more on page</span>
+        </div>
+      </a>
+
+      <!-- Live Web Map & Clustering -->
+      <a class="card link-card" href="gis.html" aria-label="Open Live Web Map & Clustering showcase">
+        <h3 style="margin:0 0 6px">Live Web Map & Clustering (Hydrants & Mains)</h3>
+        <p class="muted" style="margin:0">
+          Interactive web-GIS demo consuming public services, with dynamic clustering for point layers,
+          view-based analytics, and quick filters (e.g., “≥ 150&nbsp;mm”). Shows my front-end map
+          work and lightweight analysis patterns in the browser.
+        </p>
+        <div class="meta">
+          <span class="pill">Leaflet</span>
+          <span class="pill">Esri-Leaflet</span>
+          <span class="pill">MarkerCluster</span>
+          <span class="pill">Chart.js</span>
+        </div>
+        <div class="actions">
+          <span class="btn primary">Open Live Map</span>
+          <span class="btn outline">See filters & charts</span>
+        </div>
+      </a>
+
+      <!-- Future example placeholder (easy to enable later) -->
+      <!--
+      <a class="card link-card" href="YOUR_NEXT_PAGE.html" aria-label="Open future showcase">
+        <h3 style="margin:0 0 6px">Coming Soon: BI Dashboard</h3>
+        <p class="muted" style="margin:0">
+          A compact BI dashboard with parameterised filters, KPI tiles, and drill-through charts.
+        </p>
+        <div class="meta">
+          <span class="pill">BI</span>
+          <span class="pill">KPIs</span>
+        </div>
+        <div class="actions">
+          <span class="btn">Preview</span>
+        </div>
+      </a>
+      -->
+
+    </section>
+  </main>
+
+  <footer class="container">© <span id="y"></span> Morteza Imani · GIS & BI Showcase</footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
