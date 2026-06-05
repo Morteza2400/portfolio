@@ -1,0 +1,122 @@
+/* Scoped to this page; uses only your :root tokens */
+body.project-ewcm .hero-card{
+  background:
+    linear-gradient(180deg, rgba(34,197,94,.10), transparent 60%),
+    linear-gradient(0deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+  border:1px solid var(--line);
+  margin: 18px 0;
+}
+
+body.project-ewcm h1{ margin: 0 0 6px; }
+body.project-ewcm h2{ margin: 0 0 10px; }
+body.project-ewcm h3{ margin: 0 0 6px; font-size: 1.05rem; }
+
+body.project-ewcm .details{ margin-top: 10px; }
+body.project-ewcm .details summary{
+  cursor:pointer; color:var(--link); font-weight:600; margin-bottom:6px;
+}
+body.project-ewcm .details[open] summary{ margin-bottom:10px; }
+body.project-ewcm .details .details-body{
+  background:#0b132a; border:1px solid var(--line); border-radius:12px; padding:12px;
+}
+body.project-ewcm .details .details-body ul{ margin:0; padding-left:18px; }
+
+body.project-ewcm .fig{
+  margin-top:10px; border:1px solid var(--line); border-radius:12px; overflow:hidden;
+  background: var(--card);
+}
+body.project-ewcm .fig img{ display:block; width:100%; height:auto; }
+body.project-ewcm .fig figcaption{ padding:10px 12px; border-top:1px solid var(--line); font-size:13px; color: var(--muted); }
+
+body.project-ewcm .demo label{ display:block; margin: 8px 0; }
+body.project-ewcm .demo input[type=range]{ width:100%; }
+body.project-ewcm .bars{ display:grid; gap:10px; margin-top:10px; }
+body.project-ewcm .bar{ display:flex; align-items:center; gap:10px; }
+body.project-ewcm .bar i{
+  display:block; flex:1; height:10px; border-radius:999px;
+  background: linear-gradient(90deg, var(--brand-2), var(--brand));
+}
+
+body.project-ewcm .cta{
+  background:
+    linear-gradient(180deg, rgba(96,165,250,.08), transparent 60%),
+    linear-gradient(0deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+}
+
+
+.ewcm-grid{
+  display: grid;
+  grid-template-columns: 1.25fr 0.9fr;  /* left wider */
+  gap: 22px;                             /* space between columns */
+  align-items: start;
+  margin-top: 18px;
+}
+
+/* left side stacks its cards with gaps */
+.stack{
+  display: grid;
+  gap: 18px;          /* space between rows of cards/sections */
+}
+
+/* ensure internal grids also breathe a bit more */
+.stack .grid2,
+.stack .grid3{ gap: 20px; }
+
+/* give cards a tiny outer margin so borders never “kiss” */
+.stack .card,
+.pdf-pane{ margin: 1px; }
+
+/* sticky PDF pane on large screens */
+.pdf-pane{
+  position: sticky;
+  top: 84px; /* keeps below your sticky nav */
+  height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* clip child rounding */
+}
+.pdf-pane header{
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+  margin: 8px 12px 8px;
+  color: var(--muted);
+}
+.pdf-pane .pdf-frame{
+  flex: 1;
+  margin: 0 8px 8px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #0b132a;
+}
+.pdf-pane iframe{
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* card/section breathing */
+body.project-ewcm .hero-card{ margin: 0; }
+body.project-ewcm .card{ padding: 18px; }
+
+/* figure + captions */
+body.project-ewcm .fig{ margin-top: 12px; }
+
+/* interactive bars spacing */
+body.project-ewcm .bars{ display:grid; gap:10px; margin-top:10px; }
+body.project-ewcm .bar{ display:flex; align-items:center; gap:10px; }
+body.project-ewcm .bar i{
+  display:block; flex:1; height:10px; border-radius:999px;
+  background: linear-gradient(90deg, var(--brand-2), var(--brand));
+}
+
+/* responsive: stack pdf below content on small screens */
+@media (max-width: 1100px){
+  .ewcm-grid{
+    grid-template-columns: 1fr; /* single column */
+  }
+  .pdf-pane{
+    position: static;
+    height: 70vh; /* still nicely scrollable */
+  }
+}

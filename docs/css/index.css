@@ -1,0 +1,115 @@
+/* Index-only hero section */
+.hero{
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 20px;
+  align-items: center;
+  margin-top: 20px;
+}
+.hero h1{font-size:2rem;margin:0 0 8px}
+.hero p{margin:0 0 12px}
+.hero img{
+  width:100%;
+  border-radius:18px;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+}
+/* --- Photo cards --- */
+.photos .photo-card figure{margin:0; position:relative}
+.photo-card img{
+  width:100%; height:auto; display:block;
+  border-radius:12px; border:1px solid var(--line);
+  aspect-ratio: 4/3; object-fit: cover;
+  transition: transform .35s ease, box-shadow .35s ease;
+  box-shadow: var(--shadow);
+}
+.photo-card:hover img{ transform: translateY(-2px) scale(1.01) }
+
+.photo-card figcaption{
+  margin-top:10px;
+}
+.photo-card h3{
+  margin:0 0 4px; font-size:1.05rem;
+}
+.photo-card .badge{
+  display:inline-block;
+  font-size:.75rem; font-weight:600;
+  color:#0b0c10; background:var(--brand-2);
+  padding:3px 8px; border-radius:999px;
+  margin-bottom:6px; border:1px solid var(--line);
+}
+
+/* Optional: tighten grid spacing just for this row */
+.photos{ margin-top: 10px; margin-bottom: 8px }
+/* --- Hero slider --- */
+.hero{ grid-template-columns:1.2fr .8fr } /* keep your layout */
+
+.hero-slider {
+  position: relative;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  background: #0d1530;
+
+  max-height: 620px;     /* cap overall height */
+  aspect-ratio: 4 / 3;   /* nice landscape shape */
+}
+
+.hero-slider .slides{
+  position:relative;
+  height:100%;
+}
+
+.hero-slider .slide{
+  position:absolute; inset:0;
+  opacity:0; pointer-events:none;
+  transition: opacity .35s ease;
+}
+.hero-slider .slide.is-active{
+  opacity:1; pointer-events:auto;
+}
+.hero-slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Prev/Next buttons */
+.slide-nav{
+  position:absolute; top:50%; transform:translateY(-50%);
+  background:rgba(0.5,0.5,0,.35);
+  border:1px solid var(--line);
+  color:var(--text);
+  width:38px; height:38px; border-radius:999px;
+  display:grid; place-items:center;
+  cursor:pointer; z-index:2;
+  backdrop-filter:saturate(120%) blur(4px);
+}
+.slide-nav:hover{ background:rgba(0,0,0,.5) }
+.slide-nav.prev{ left:10px }
+.slide-nav.next{ right:10px }
+
+/* Dots */
+.dots{
+  position:absolute; left:0; right:0; bottom:10px;
+  display:flex; gap:8px; justify-content:center; z-index:2;
+}
+.dot{
+  width:8px; height:8px; border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.25);
+  cursor:pointer;
+}
+.dot.is-active{ background:var(--brand-2) }
+
+/* Screen-reader helper */
+.sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+  clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}
+
+/* Small screens: make slider shorter if needed */
+@media (max-width: 700px){
+  .hero-slider img{ aspect-ratio: 4/5 }
+}

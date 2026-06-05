@@ -1,0 +1,64 @@
+/* ======= IR-FRA project (scoped to this page) ======= */
+
+body.project-irfra .hero-card{
+  background:
+    linear-gradient(180deg, rgba(96,165,250,.08), transparent 60%),
+    linear-gradient(0deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+  border:1px solid var(--line);
+  margin:18px 0;
+}
+body.project-irfra h1{ margin:0 0 6px }
+body.project-irfra h2{ margin:0 0 10px }
+body.project-irfra .hero-card .pills{ margin-top:10px }
+
+/* Two-column page layout aligned with your base container width */
+.irfra-grid{
+  display:grid;
+  grid-template-columns: 1.25fr 0.9fr;  /* left wider, right PDF a bit narrower */
+  gap:22px;
+  align-items:start;
+  margin-top:18px;
+}
+
+/* left column stacks cards with nice breathing room */
+.stack{ display:grid; gap:18px }
+.stack .grid2, .stack .grid3{ gap:20px }
+
+/* keep slight separation so borders never visually touch */
+.stack .card, .pdf-pane{ margin:1px }
+
+/* PDF pane: sticky and scrollable inside */
+.pdf-pane{
+  position:sticky;
+  top:84px; /* below your sticky nav */
+  height:calc(100vh - 120px);
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+.pdf-pane header{
+  padding-bottom:8px;
+  border-bottom:1px solid var(--line);
+  margin:8px 12px 8px;
+  color:var(--muted);
+}
+.pdf-pane .pdf-frame{
+  flex:1;
+  margin:0 8px 8px;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:#0b132a;
+}
+.pdf-pane iframe{ width:100%; height:100%; border:0 }
+
+/* figures */
+.fig{ margin-top:10px }
+.fig img{ width:100%; height:auto; border-radius:10px; display:block }
+.fig figcaption{ padding-top:6px; font-size:13px; color:var(--muted) }
+
+/* responsive: stack on smaller screens */
+@media (max-width: 1100px){
+  .irfra-grid{ grid-template-columns: 1fr }
+  .pdf-pane{ position:static; height:70vh }
+}

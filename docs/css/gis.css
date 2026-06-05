@@ -1,0 +1,88 @@
+.leaflet-control.filterctl{
+background:#0f172a; color:#e6edf6; border:1px solid rgba(255,255,255,.08);
+border-radius:12px; padding:10px; box-shadow:0 12px 40px rgba(0,0,0,.35); width:260px;
+}
+.filterctl label{display:block;font-size:12px;color:#9aa3b2;margin:6px 0 4px}
+.filterctl select,.filterctl input{
+width:100%; background:#0b132a; color:#e6edf6; border:1px solid rgba(255,255,255,.08);
+border-radius:8px; padding:6px 8px;
+}
+.filterctl .row{display:grid; grid-template-columns:1fr 100px; gap:8px}
+.filterctl .btns{display:flex; gap:8px; margin-top:8px}
+.filterctl button{
+flex:1; padding:8px 10px; border-radius:10px; border:1px solid rgba(255,255,255,.08);
+background:#0d1530; color:#e6edf6; cursor:pointer;
+}
+.filterctl button.primary{ background:#4f46e5; }
+.filterctl .hint{font-size:11px;color:#9aa3b2;margin-top:6px}
+
+
+/* Make the container wider only on GIS */
+.container--gis{
+  max-width: clamp(1100px, 96vw, 1600px);
+}
+
+/* GIS-only 3-column layout */
+.container--gis.page-grid,
+.container--gis .page-grid{
+  display:grid;
+  grid-template-columns:
+    minmax(720px, 2.6fr)            /* MAP */
+    clamp(240px, 18vw, 300px)     /* LEGEND */
+    minmax(420px, 1fr);         /* STATS */
+  gap:16px;
+  align-items:start;
+}
+
+/* Add spacing between cards only on the GIS page */
+.container--gis .card {
+  margin-top: 20px;
+}
+
+
+/* Legend behavior */
+.legend-card{
+  max-width:380px;
+  width:100%;
+  position:sticky;
+  top:84px;
+}
+/* 2) Optional: cap stats card so it doesn't stretch too much */
+.stats-card{ max-width: 680px }
+
+/* 3) Optional: make the map a bit taller to match new width */
+#map{ height: 620px }
+
+/* Keep our earlier “cancel the global reordering” rules */
+.container--gis .page-grid > .card:first-of-type,
+.container--gis.page-grid > .card:first-of-type{ grid-column:auto !important; }
+.container--gis .page-grid > .grid2,
+.container--gis.page-grid > .grid2{ grid-column:auto !important; }
+
+/* Responsive fallbacks still apply */
+@media (max-width:1300px){
+  .container--gis.page-grid,
+  .container--gis .page-grid{
+    grid-template-columns:
+      minmax(640px, 1fr)
+      clamp(240px, 26vw, 300px);
+  }
+  .stats-card{ grid-column: 1 / -1; max-width:none }
+}
+@media (max-width:900px){
+  .container--gis.page-grid,
+  .container--gis .page-grid{ grid-template-columns:1fr }
+  #map{ height: 440px }
+}
+/* Make links inside GIS cards green */
+.container--gis a {
+  color: var(--brand-2);       /* uses your existing green token (#22c55e) */
+  text-decoration: none;
+}
+
+.container--gis a:hover {
+  text-decoration: underline;  /* optional hover style */
+}
+.stats-card > div > div {
+  display: none !important;
+}
